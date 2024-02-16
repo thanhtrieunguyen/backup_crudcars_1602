@@ -1,0 +1,62 @@
+.important {
+    color: #FA2D2D !important;
+    font-weight: normal;
+    margin-left: 0px;
+    padding: 0;
+}
+
+span {
+    padding-bottom: 20px;
+}
+
+.pageLoader {
+    background: url(../upload/images/loader.gif) no-repeat center center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+    background-color: #ffffff8c;
+    display: none;
+}
+
+.preview-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.preview-image-container .delete-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+button {
+    border: 1px solid black
+}
+
+#preview img {
+    max-height: 100px;
+}
+
+/* CSS cho bảng */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
