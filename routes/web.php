@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\XeController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,13 @@ use App\Http\Controllers\XeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
+Route::get('/', [PageController::class, 'getHome'])->name('pages.trangchu');
+
+Route::get('chitietxe/{id}', [XeController::class, 'show'])->name('xe.show');
+
+// ADMIN ROUTE
 // Route::group(['prefix' => 'admin'], function () {
 //     Route::get('/xe', [XeController::class, 'index'])->name('xe.index');
 //     Route::get('/xe/create', [XeController::class, 'create'])->name('xe.create');

@@ -26,9 +26,14 @@
 
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link type="text/css" rel="stylesheet" href="http://example.com/image-uploader.min.css">
+
+    {{-- icon font --}}
+    <link rel="stylesheet" href="icons/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="icons/fontawesome/css/all.css">
+    <link rel="stylesheet" href="icons/themify-icons/themify-icons.css">
 </head>
 
-<body class="bg-light" id="page-top" data-spy="scroll" data-offset="50">
+<body class="" id="page-top" data-spy="scroll" data-offset="50">
 
     @include('layouts.header')
     <div class="container py-4" style="min-height: calc(100vh - 166px); margin-top: 56px">

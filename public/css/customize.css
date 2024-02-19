@@ -1,3 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope",
+        "Encode Sans Expanded",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
+}
+
+pre {
+    font-family: "Manrope",
+        "Encode Sans Expanded",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
+}
+
 .important {
     color: #FA2D2D !important;
     font-weight: normal;
@@ -5,9 +43,7 @@
     padding: 0;
 }
 
-span {
-    padding-bottom: 20px;
-}
+
 
 .pageLoader {
     background: url(../upload/images/loader.gif) no-repeat center center;
@@ -60,3 +96,503 @@ button {
     color: #333;
 }
 
+
+.m-container {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* START info-car-basic */
+
+.detail-car .detail-container .content-detail .info-car-basic {
+    margin-bottom: 36px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-tag {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px 0 -8px;
+}
+
+span.tag-item {
+    color: #262626;
+    padding: 4px 8px;
+    border-radius: 100px;
+    font-size: .75rem;
+    font-weight: 500;
+    margin: 0 8px 8px 0;
+    width: fit-content;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 8px;
+    gap: 8px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-total {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.group-total .info {
+    margin-right: 10px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared .wrap-ic {
+    padding: 12px;
+    border-radius: 100%;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared .wrap-ic.active {
+    background-color: #effaf3;
+    border: 1px solid #5fcf86;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared .wrap-ic.active svg path {
+    stroke: #5fcf86;
+}
+
+
+
+span.tag-item.non-mortgage {
+    background: #dff5e7;
+}
+
+span.tag-item.transmission {
+    background: #eef7ff;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-total span.info {
+    color: #767676;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared {
+    gap: 8px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared .wrap-svg {
+    padding: 8px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-name .shared .wrap-svg svg {
+    width: 16px;
+    height: 16px;
+}
+
+.detail-car .detail-container .content-detail .info-car-basic .group-total span {
+    font-size: 0.875rem;
+}
+
+/* END info-car-basic */
+
+/* START CSS ĐẶC ĐIỂM */
+p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.line-page {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-car .detail-container .content-detail {
+    width: calc(68% - 92px);
+    float: left;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 0;
+    scroll-margin-top: 110px;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc h6 {
+    margin-bottom: 24px;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+h6 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .outstanding-features {
+    display: flex;
+    grid-gap: 20px;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .outstanding-features__item {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    gap: 16px;
+}
+
+.wrap-svg {
+    line-height: 0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .outstanding-features__item .title {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 4px;
+    gap: 4px;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .outstanding-features__item .title p.sub {
+    color: #767676;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .outstanding-features__item .title p.main {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000;
+}
+
+/* END CSS content-detail */
+
+/* START sidebar-detail */
+.detail-car .detail-container .sidebar-detail {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 24px;
+    gap: 24px;
+    width: 35%;
+    float: right;
+    margin-bottom: 80px;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box {
+    padding: 16px 24px;
+    background: #f7fbff;
+    border: 1px solid #f4f4f4;
+    border-radius: 10px;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .price {
+    margin: 0 0 16px;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .date-time-form {
+    position: relative;
+    display: flex;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 12px;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .date-time-form .form-item {
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .date-time-form .form-item label {
+    font-size: .875rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .date-time-form .form-item .wrap-date-time {
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+    font-weight: 600;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .date-time-form .line {
+    border-right: 1px solid #e0e0e0;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .price-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+    padding-top: 16px;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .price-container .price-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .price-container .price-item p.cost {
+    color: #000;
+    font-weight: 600;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .price-item.total,
+.detail-car .detail-container .sidebar-detail .rent-box .price-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.detail-car .detail-container .sidebar-detail .rent-box .price-item.total p,
+.detail-car .detail-container .sidebar-detail .rent-box .price-item.total p.cost,
+.detail-car .detail-container .sidebar-detail .rent-box .price-total p,
+.detail-car .detail-container .sidebar-detail .rent-box .price-total p.cost {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.df-align-center {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.btn.btn--m {
+    padding: 16px 24px;
+}
+
+.btn.btn-primary {
+    color: #fff;
+    background-color: #5fcf86;
+    border-color: #5fcf86;
+}
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 8px;
+    gap: 8px;
+    background-color: initial;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #000;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+
+.width-100 {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.surcharge {
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.surcharge p.title {
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.text-primary {
+    color: #5fcf86 !important;
+}
+
+.surcharge .surcharge-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 12px;
+    gap: 12px;
+}
+
+.surcharge .surcharge-container .surcharge-item {
+    display: flex;
+    font-size: .75rem;
+    line-height: 16px;
+    grid-gap: 12px;
+    gap: 12px;
+}
+
+.surcharge .surcharge-container .surcharge-item .content {
+    display: flex;
+    grid-gap: 4px;
+    gap: 4px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.surcharge .surcharge-container .surcharge-item .content .content-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.surcharge .read-more {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #5fcf86;
+    cursor: pointer;
+    margin-left: 28px;
+}
+
+.surcharge .surcharge-container .surcharge-item .content .content-item p.cost,
+.surcharge .surcharge-container .surcharge-item .content .content-item p.title {
+    font-weight: 700;
+    margin: 0;
+    color: #000;
+}
+
+.surcharge .surcharge-container .surcharge-item .content .content-item p {
+    color: #666;
+    font-weight: 500;
+    margin: 0px;
+}
+
+/* END sidebar-detail */
+
+/* START MÔ TẢ VÀ CÁC TIỆN NGHI KHÁC*/
+.detail-car .detail-container .content-detail .info-car-desc pre {
+    position: relative;
+    color: #767676;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .features-car ul {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px 20px;
+    gap: 24px 20px;
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .features-car ul li {
+    display: flex;
+    grid-gap: 16px;
+    gap: 16px;
+    width: calc(25% - 15px);
+}
+
+.detail-car .detail-container .content-detail .info-car-desc .features-car ul li img {
+    width: 24px;
+    height: 24px;
+}
+
+/* END MÔ TẢ */
+
+/* START CHÍNH SÁCH QUY ĐỊNH */
+.fontWeight-4 {
+    font-weight: 400 !important;
+}
+
+.font-16 {
+    font-size: 1rem !important;
+}
+
+.text-gray {
+    color: grey !important;
+}
+
+.cancel-policy .column.title {
+    border-radius: 12px 12px 0 0;
+}
+
+.cancel-policy .column {
+    display: flex;
+    border: 1px solid #c6c6c6;
+}
+
+.cancel-policy .column.title .column__item {
+    font-size: .875rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.cancel-policy .column .column__item.case {
+    justify-content: center;
+    font-size: .875rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-align: left;
+    padding-left: 24px;
+}
+
+.cancel-policy .column .column__item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    font-size: .75rem;
+    font-weight: 500;
+    justify-content: center;
+}
+
+.cancel-policy .column .column__item:not(:first-child) {
+    border-left: 1px solid #c6c6c6;
+}
+
+.cancel-policy .desc-note {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2px;
+    gap: 2px;
+}
+
+/* END CHÍNH SÁCH QUY ĐỊNH */
+
+.navbar-dark .navbar-nav .nav-link {
+    color: black;
+    font-weight: 600;
+    font-size: .875rem;
+    font-weight: 700;
+    padding: 12px 16px;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: black
+}
+
+nav {
+    background-color: #fff;
+    background-image: url(https://www.mioto.vn/static/media/header.350aa232.png);
+}

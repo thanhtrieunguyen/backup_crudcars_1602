@@ -173,7 +173,7 @@ class XeController extends Controller
     {
         $xe = Xe::findOrFail($id);
         $urls = json_decode($xe->hinhxe->hinhxe, true);
-        
+
         // Xoá cả hình trong Cloudinary
         foreach ($urls as $url) {
             $public_id = basename($url, '.' . pathinfo($url, PATHINFO_EXTENSION));
@@ -186,6 +186,14 @@ class XeController extends Controller
         $xe->delete();
 
         return back()->with(['thong-bao' => 'Xóa xe ' . $xe->tenxe . ' thành công!', 'type' => 'success']);
+    }
+
+
+    public function show($id)
+    {
+        $xe = Xe::with('dongXe')->where('idxe', $id)->firstOrFail();
+        // $comments = Comment::where('idxes', $id)->get(); // Lấy các bình luận của xe
+        return view('pages.chitietxe', compact('xe'));
     }
 
 
