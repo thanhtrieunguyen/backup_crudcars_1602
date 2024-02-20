@@ -103,6 +103,54 @@ button {
     margin: 0 auto;
 }
 
+/* START IMAGE CAR */
+
+.cover-car {
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.cover-car-container {
+    display: flex;
+    position: relative;
+    grid-gap: 16px;
+    gap: 16px;
+    width: 100%;
+}
+
+.cover-car-container .main-img {
+    position: relative;
+    width: calc(68% - 16px);
+    height: 100%;
+}
+
+.cover-car-item {
+    cursor: pointer;
+}
+
+.cover-car-item img {
+    width: 100%;
+    height: 600px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.cover-car-container .sub-img {
+    width: 32%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    gap: 16px;
+}
+
+.cover-car-container .sub-img img {
+    height: 189.3333333333px;
+}
+
+
+
+
 /* START info-car-basic */
 
 .detail-car .detail-container .content-detail .info-car-basic {
@@ -399,7 +447,6 @@ h6 {
     align-items: center;
     grid-gap: 8px;
     gap: 8px;
-    background-color: initial;
     vertical-align: middle;
     cursor: pointer;
     white-space: nowrap;
@@ -407,7 +454,7 @@ h6 {
     font-weight: 700;
     padding: 8px 16px;
     border-radius: 8px;
-    border: 1px solid #000;
+    color: white;
 }
 
 .width-100 {
@@ -592,7 +639,111 @@ pre {
     color: black
 }
 
-nav {
+nav.navbar {
     background-color: #fff;
     background-image: url(https://www.mioto.vn/static/media/header.350aa232.png);
 }
+
+/* START CSS TRANG CHỦ */
+
+
+
+.list-car-section .col4-mg20 {
+    padding-bottom: 20px;
+    overflow: auto;
+}
+
+.col4-mg20 {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    gap: 20px;
+}
+
+.col4-mg20 .item {
+    width: calc(25% - 15px);
+}
+
+.item-car {
+    display: flex;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.list-car-section .list-car .item-car .item-box {
+    height: 100%;
+}
+
+.item-car .item-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    grid-gap: 32px;
+    gap: 32px;
+    border-radius: 12px;
+}
+
+.item-car .item-box .img-car {
+    position: relative;
+}
+
+.item-car .item-box .desc-car {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.item-car .item-box .desc-car .desc-tag {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+span.tag-item.transmission {
+    background: #eef7ff;
+}
+
+span.tag-item.delivery {
+    background: #fce0d3;
+}
+
+.item-car .item-box .desc-car .desc-name {
+    display: flex;
+    align-items: center;
+    grid-gap: 4px;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.desc-car .desc-name p {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fix-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+}
+
+.fix-img {
+    padding-bottom: 75%;
+    border-radius: 10px;
+}
+
+.desc-car p.cost {
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* END CSS TRANG CHỦ */

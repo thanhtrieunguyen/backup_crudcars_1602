@@ -3,7 +3,6 @@
 @section('content')
     <link rel="stylesheet" href="css/style.css">
 
-
     <marquee>VietCar-Dịch cho thuê xe 4-7-16 chỗ hàng đầu Việt Nam.Thông báo chương trình đồ án cơ sở ngành năm 2023-2024
         bắt đầu từ ngày 1/1/2024 đến hết ngày 30/5/2024</marquee>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -125,29 +124,47 @@
             <div class="col-md-4 mb-4">
                 @php
                     $array = json_decode($xe->hinhxe->hinhxe);
-                    $img1 = isset($array[1]) ? $array[1] : null;
+                    $img1 = null;
+                    foreach ($array as $imagePath) {
+                        $imageSize = getimagesize($imagePath);
+                        if ($imageSize !== false && $imageSize[0] <= 1440 && $imageSize[1] <= 1080) {
+                            $img1 = $imagePath;
+                            break;
+                        }
+                    }
                 @endphp
+
                 <div class="card shadow rounded-lg border-0 overflow-hidden">
-                    <a href="{{ route('xe.show', ['id' => $xe->idxe]) }}">
-                        <img src="{{ $img1 }}" class="card-img-top" alt="{{ $xe->tenxe }}">
+                    <a href="{{ route('xe.show', ['id' => $xe->idxe]) }}" target="_blank" class="fix-img">
+                        <img src="{{ $img1 }}" class="" alt="{{ $xe->tenxe }}"
+                            style="width: 100%; height:250px ">
                     </a>
-                    <div class="card-body">
-                        <a href="{{ route('xe.show', ['id' => $xe->idxe]) }}" class="text-dark text-decoration-none">
-                            <h5 class="card-title pb-3 pt-0">Xe {{ $xe->tenxe }}</h5>
+                    <div class="card-body desc-car">
+                        <a href="{{ route('xe.show', $xe->idxe) }}" target="_blank"
+                            class="text-dark text-decoration-none">
+                            <div class="desc-name">
+                                <p>{{ $xe->tenxe }}</p>
+                            </div>
                         </a>
                         <div class="d-flex flex-row justify-content-between">
-                            <div class="card-text"><span class="font-weight-bold">{{ $xe->dongxe->tendongxe }}
+                            <div class="card-text d-flex flex-column align-content-between">
+                                <span class="font-weight-normal">{{ $xe->dongxe->tendongxe }}
                                 </span>
+                                <span class="font-weight-normal">{{ $xe->hangxe->tenhangxe }}
+                                </span>
+
                             </div>
-                            <div class="card-text">Giá thuê <span class="text-primary">{{ number_format($xe->gia) }}
-                                    đồng</span></div>
+                            <div class="card-text cost">Giá thuê <p class="cost"><span
+                                        class="text-primary">{{ number_format($xe->gia) }}
+                                        đồng</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
         <div class="col-12 text-center mt-4">
-            <a href="/thuexe" class="btn btn-outline-secondary">Xem thêm</a>
+            <a href="/thuexe" class="btn btn-success">Xem thêm</a>
         </div>
     </div>
     <section class="dishes" id="dishes">

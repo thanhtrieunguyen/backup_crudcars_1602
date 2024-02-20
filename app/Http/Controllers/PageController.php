@@ -14,4 +14,24 @@ class PageController extends Controller
         // return view('pages.trang-chu', ['xes' => $xes]);
         return view('pages.trangchu', compact('xes'));
     }
+
+    public function getDangNhap()
+    {
+        return view('pages.dangnhap');
+    }
+
+    public function getDangKy()
+    {
+        $today = \Carbon\Carbon::now()->format('Y-m-d');
+        return view('pages.dangky', compact('today'));
+    }
+
+    public function getAbout() {
+        return view('pages.about');
+    }
+
+    public function getContact()
+    {
+        return view('pages.lienhe');
+    }
 }

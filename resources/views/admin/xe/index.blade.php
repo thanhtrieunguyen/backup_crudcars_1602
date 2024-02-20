@@ -56,7 +56,7 @@
                                     </td>
 
                                     <td>
-                                        <a href="{{ url('xe', $xe->idxe) }}">
+                                        <a href="{{ route('xe.show', $xe->idxe) }}">
                                             {{ $xe->tenxe }}
                                         </a>
                                     </td>
@@ -64,12 +64,12 @@
                                     <td>{{ number_format($xe->gia) }} đồng</td>
                                     <td>{{ $xe->dongXe->tendongxe }}</td>
                                     <td>{{ $xe->hangXe->tenhangxe }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ route('xe.edit', $xe->idxe) }}"
-                                            class="text-primary mr-3 fa fa-edit">Cập
+                                    <td class="text-center" style="display: flex">
+                                        <a href="{{ route('xe.edit', $xe->idxe) }}" class="text-primary mr-3"><i
+                                                class="fa fa-edit"></i>Cập
                                             nhật</a>
-                                        <a href="#" class="text-danger js_btn_xoa_xe fa fa-trash"
-                                            xe-id="{{ $xe->idxe }}">Xóa</a>
+                                        <a href="#" class="text-danger js_btn_xoa_xe" xe-id="{{ $xe->idxe }}"><i
+                                                class="fa fa-trash"></i>Xóa</a>
                                         <form id="js_form_xoa_xe_{{ $xe->idxe }}"
                                             action="{{ route('xe.destroy', $xe->idxe) }}" method="POST">
                                             @csrf

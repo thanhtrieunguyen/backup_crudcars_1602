@@ -5,12 +5,34 @@
         @php
             $array = json_decode($xe->hinhxe->hinhxe);
             $img1 = isset($array[0]) ? $array[0] : null;
+            $img2 = isset($array[1]) ? $array[1] : null;
+            $img3 = isset($array[2]) ? $array[2] : null;
+            $img4 = isset($array[3]) ? $array[3] : null;
         @endphp
-        <div class="overflow-hidden">
-            <img class="w-100 rounded-lg" src="{{ $img1 }}" alt="{{ $xe->tenxe }}">
-        </div>
         <div class="card rounded-lg border-0 mt-4">
             <section class="body">
+                <div class="cover-car">
+                    <div class="m-container">
+                        <div class="cover-car-container">
+                            <div class="main-img">
+                                <div class="cover-car-item">
+                                    <img src="{{ $img1 }}" alt="">
+                                </div>
+                            </div>
+                            <div class="sub-img">
+                                <div class="cover-car-item">
+                                    <img src="{{ $img2 }}" alt="{{ $xe->tenxe }}">
+                                </div>
+                                <div class="cover-car-item">
+                                    <img src="{{ $img3 }}" alt="{{ $xe->tenxe }}">
+                                </div>
+                                <div class="cover-car-item">
+                                    <img src="{{ $img4 }}" alt="{{ $xe->tenxe }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="detail-car">
                     <div class="m-container">
                         <div class="detail-container">
@@ -50,7 +72,7 @@
                             <div class="sidebar-detail">
                                 <div class="rent-box" id="cardetail" style="position: relative;">
                                     <div class="price">
-                                        <h4>816K/ngày</h4>
+                                        <h4>{{ number_format($xe->gia) }}K/ngày</h4>
                                     </div>
                                     <div class="date-time-form ">
                                         <div class="form-item"><label>Nhận xe </label>
@@ -647,97 +669,100 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
                 var thanhTien = soNgayThue * donGia; // Tính tổng tiền
                 thanhTienElement.textContent = thanhTien.toLocaleString() + ' đồng'; // Hiển thị tổng tiền
             }
-        }
-    </script>
+        } <
+        />
 
-    {{-- <script>
+        {{-- <script>
         var des = document.querySelector('.des').innerText.toString();
         var afterDes = des.replace(/\r\n/g, "<br>")
         console.log(afterDes)
     </script> --}}
 
-    <script>
-        // Assign the value of PHP variable to a JavaScript variable
-        var des = document.querySelector('.des')
+            <
+            script >
+            // Assign the value of PHP variable to a JavaScript variable
+            var des = document.querySelector('.des')
         var text = "<?php echo "$xe->mieuta"; ?>";
         var replacedText = text.replace(/\r\n/g, "<br>");
         des.innerHTML = replacedText;
         // Now you can use the JavaScript variable 'imageData' as needed
         console.log(replacedText); // Example: Output the value to console
-    </script>
+        <
+        />
 
 
 
 
 
-    <script>
-        $(document).ready(function() {
+        <
+        script >
+            $(document).ready(function() {
 
-            let dateNhan, dateTra, days, thanhTien;
+                let dateNhan, dateTra, days, thanhTien;
 
 
 
-            $('.js_btn_dat_xe').click(function(e) {
-                e.preventDefault();
-                let tenXe = $('.js_ten_xe').html();
-                let tenLoaiXe = $('.js_ten_loai_xe').html();
-                let bienSo = $('.js_bien_so').val();
-                let cmnd = $('.js_cccd').val();
-                let ngayNhanXe = $('.js_ngay_nhan_xe').val();
-                let ngayTraXe = $('.js_ngay_tra_xe').val();
+                $('.js_btn_dat_xe').click(function(e) {
+                    e.preventDefault();
+                    let tenXe = $('.js_ten_xe').html();
+                    let tenLoaiXe = $('.js_ten_loai_xe').html();
+                    let bienSo = $('.js_bien_so').val();
+                    let cmnd = $('.js_cccd').val();
+                    let ngayNhanXe = $('.js_ngay_nhan_xe').val();
+                    let ngayTraXe = $('.js_ngay_tra_xe').val();
 
-                $('.js_ten_xe_md').html(tenXe);
-                $('.js_loai_xe_md').html(tenLoaiXe);
-                $('.js_bien_so_md').html(bienSo);
-                $('.js_cccd_md').html(cmnd);
-                $('.js_ngay_nhan_xe_md').html(ngayNhanXe);
-                $('.js_ngay_tra_xe_md').html(ngayTraXe);
-                $('.js_don_gia_md').html(`${donGia.toLocaleString("en")} đồng`);
-                $('.js_so_ngay_md').html(days);
-                $('.js_thanh_tien_md').html(`${thanhTien.toLocaleString("en")} đồng`);
+                    $('.js_ten_xe_md').html(tenXe);
+                    $('.js_loai_xe_md').html(tenLoaiXe);
+                    $('.js_bien_so_md').html(bienSo);
+                    $('.js_cccd_md').html(cmnd);
+                    $('.js_ngay_nhan_xe_md').html(ngayNhanXe);
+                    $('.js_ngay_tra_xe_md').html(ngayTraXe);
+                    $('.js_don_gia_md').html(`${donGia.toLocaleString("en")} đồng`);
+                    $('.js_so_ngay_md').html(days);
+                    $('.js_thanh_tien_md').html(`${thanhTien.toLocaleString("en")} đồng`);
 
-                $('#js_modal_xac_nhan').modal('show');
-            });
+                    $('#js_modal_xac_nhan').modal('show');
+                });
 
-            $('.js_btn_xac_nhan').click(function(e) {
-                e.preventDefault();
-                const data = {
-                    'xe_bien_so': $('.js_bien_so').val(),
-                    'user_cmnd': $('.js_cccd').val(),
-                    'ngaynhanxe': $('.js_ngay_nhan_xe').val(),
-                    'ngay_tra_xe': $('.js_ngay_tra_xe').val(),
-                    'thanh_tien': thanhTien
-                };
+                $('.js_btn_xac_nhan').click(function(e) {
+                    e.preventDefault();
+                    const data = {
+                        'xe_bien_so': $('.js_bien_so').val(),
+                        'user_cmnd': $('.js_cccd').val(),
+                        'ngaynhanxe': $('.js_ngay_nhan_xe').val(),
+                        'ngay_tra_xe': $('.js_ngay_tra_xe').val(),
+                        'thanh_tien': thanhTien
+                    };
 
-                $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        type: "post",
-                        url: "xac-nhan-dat-xe",
-                        data: {
-                            xe_bien_so: data.xe_bien_so,
-                            user_cmnd: data.user_cmnd,
-                            ngay_nhan_xe: data.ngay_nhan_xe,
-                            ngay_tra_xe: data.ngay_tra_xe,
-                            thanh_tien: data.thanh_tien,
-                        },
-                        success: function(response) {
-                            if (!response.error) {
-                                $('#js_modal_xac_nhan').modal('hide');
-                                $('#js_modal_thong_bao_success').modal('show');
-                            } else {
-                                $('#js_modal_xac_nhan').modal('hide');
-                                $('#js_modal_thong_bao_error').modal('show');
+                    $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            type: "post",
+                            url: "xac-nhan-dat-xe",
+                            data: {
+                                xe_bien_so: data.xe_bien_so,
+                                user_cmnd: data.user_cmnd,
+                                ngay_nhan_xe: data.ngay_nhan_xe,
+                                ngay_tra_xe: data.ngay_tra_xe,
+                                thanh_tien: data.thanh_tien,
+                            },
+                            success: function(response) {
+                                if (!response.error) {
+                                    $('#js_modal_xac_nhan').modal('hide');
+                                    $('#js_modal_thong_bao_success').modal('show');
+                                } else {
+                                    $('#js_modal_xac_nhan').modal('hide');
+                                    $('#js_modal_thong_bao_error').modal('show');
+                                }
                             }
-                        }
-                    })
-                    .done(function() {})
-                    .fail(function() {
-                        $('#js_modal_xac_nhan').modal('hide');
-                        $('#js_modal_thong_bao_error').modal('show');
-                    })
+                        })
+                        .done(function() {})
+                        .fail(function() {
+                            $('#js_modal_xac_nhan').modal('hide');
+                            $('#js_modal_thong_bao_error').modal('show');
+                        })
+                });
             });
-        });
     </script>
 @endpush
