@@ -1,6 +1,11 @@
 @extends('layouts.index')
 
+<head>
+    <title>{{ $xe->tenxe }}</title>
+</head>
+
 @section('content')
+
     <div class="">
         @php
             $array = json_decode($xe->hinhxe->hinhxe);
@@ -118,7 +123,8 @@
                                     </div>
                                     @if (auth()->check())
                                         <a class="btn btn-primary btn--m width-100">
-                                            <i class="fa-solid fa-bolt-lightning"></i>CHỌN THUÊ
+                                            <i class="fa-solid fa-bolt-lightning"
+                                                style="font-size: 1rem !important;"></i>CHỌN THUÊ
                                         </a>
                                     @else
                                         <span>Vui lòng <a href="dang-nhap" class="text-primary mx-1">Đăng nhập</a> để đặt
@@ -573,31 +579,48 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
 
     </div><br>
     <section class="review" id="review">
-        @if (auth()->check())
-            @if (session('thongbao'))
-                {{ session('thongbao') }}
-            @endif
-            <h3>Đánh giá...</h3>
-            <form action="{{ url('comment/' . $xe->id) }}" method="post" role="form">
-                @csrf
-                <div>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <textarea name="NoiDung" id="comment" cols="3" rows="3" placeholder="Nội dung phản hồi..."></textarea>
+        <div class="m-container-thin">
+            @if (auth()->check())
+                @if (session('thongbao'))
+                    {{ session('thongbao') }}
+                @endif
+                <h3>Đánh giá...</h3>
+                <form action="{{ route('comments', ['id' => $xe->idxe]) }}" method="post" role="form">
+                    @csrf
+                    <div>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <input type="hidden" name="iduser" value="{{ auth()->id() }}" />
+                        <input type="hidden" name="idxe" value="{{ $xe->idxe }}" />
+
+                        <textarea name="mota" id="comment" cols="3" rows="3" placeholder="Nội dung phản hồi..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </form>
+            @else
+                <div class="alert alert-danger" role="alert">
+                    <strong>Đăng nhập để đánh giá</strong> <a href="{{ route('pages.dangnhap') }}"
+                        style="color: #5fcf86;">
+                        Đăng nhập</a>
                 </div>
-                <button type="submit" class="btn btn-primary">Gửi</button>
-            </form>
-        @else
-            <div class="alert alert-danger" role="alert">
-                <strong>Đăng nhập để đánh giá</strong> <a href="/dang-nhap" style="color: #5fcf86;"> Đăng nhập</a>
-            </div>
-        @endif
-        {{-- @foreach ($comments as $comment)
-            <div class="box1">
-                {{ $comment->user->ho_ten }}
-                <i>{{ $comment->created_at->diffForHumans() }}</i>
-                <p>{{ $comment->NoiDung }}</p><br>
-            </div>
-        @endforeach --}}
+            @endif
+            @foreach ($comments as $comment)
+                <div class="box1">
+                    <div class="info">
+                        @if ($comment->user)
+                            <!-- Check if user exists -->
+                            <h6>{{ $comment->user->hoten }}</h6>
+                        @else
+                            <h6>Unknown User</h6> <!-- Or any default message -->
+                        @endif
+                        <div class="comment-desc">
+                            <pre>{{ $comment->mota }}</pre><br>
+                            <i>{{ $comment->created_at->diffForHumans() }}</i>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
 
         <!-- Display existing comments if any -->
 
@@ -649,7 +672,7 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
             var ngayNhanXe = new Date(ngayNhanXeInput.value);
             var ngayTraXe = new Date(ngayTraXeInput.value);
 
-            if (ngayTraXe < ngayNhanXe) {
+            if (ngayTraXe < script ngayNhanXe) {
                 alert('Ngày trả xe không thể trước ngày nhận xe. Vui lòng chọn lại.');
                 ngayTraXeInput.value = ''; // Xóa giá trị ngày trả xe
                 soNgayThueElement.textContent = ''; // Xóa số ngày thuê
@@ -669,100 +692,96 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
                 var thanhTien = soNgayThue * donGia; // Tính tổng tiền
                 thanhTienElement.textContent = thanhTien.toLocaleString() + ' đồng'; // Hiển thị tổng tiền
             }
-        } <
-        />
+        }
+    </script>
 
-        {{-- <script>
+    {{-- <script>
         var des = document.querySelector('.des').innerText.toString();
         var afterDes = des.replace(/\r\n/g, "<br>")
         console.log(afterDes)
     </script> --}}
 
-            <
-            script >
-            // Assign the value of PHP variable to a JavaScript variable
-            var des = document.querySelector('.des')
+    <script>
+        var des = document.querySelector('.des')
         var text = "<?php echo "$xe->mieuta"; ?>";
         var replacedText = text.replace(/\r\n/g, "<br>");
         des.innerHTML = replacedText;
-        // Now you can use the JavaScript variable 'imageData' as needed
-        console.log(replacedText); // Example: Output the value to console
-        <
-        />
+
+        console.log(replacedText);
+    </script>
 
 
 
 
 
-        <
-        script >
-            $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-                let dateNhan, dateTra, days, thanhTien;
-
+            let dateNhan, dateTra, days, thanhTien;
 
 
-                $('.js_btn_dat_xe').click(function(e) {
-                    e.preventDefault();
-                    let tenXe = $('.js_ten_xe').html();
-                    let tenLoaiXe = $('.js_ten_loai_xe').html();
-                    let bienSo = $('.js_bien_so').val();
-                    let cmnd = $('.js_cccd').val();
-                    let ngayNhanXe = $('.js_ngay_nhan_xe').val();
-                    let ngayTraXe = $('.js_ngay_tra_xe').val();
 
-                    $('.js_ten_xe_md').html(tenXe);
-                    $('.js_loai_xe_md').html(tenLoaiXe);
-                    $('.js_bien_so_md').html(bienSo);
-                    $('.js_cccd_md').html(cmnd);
-                    $('.js_ngay_nhan_xe_md').html(ngayNhanXe);
-                    $('.js_ngay_tra_xe_md').html(ngayTraXe);
-                    $('.js_don_gia_md').html(`${donGia.toLocaleString("en")} đồng`);
-                    $('.js_so_ngay_md').html(days);
-                    $('.js_thanh_tien_md').html(`${thanhTien.toLocaleString("en")} đồng`);
+            $('.js_btn_dat_xe').click(function(e) {
+                e.preventDefault();
+                let tenXe = $('.js_ten_xe').html();
+                let tenLoaiXe = $('.js_ten_loai_xe').html();
+                let bienSo = $('.js_bien_so').val();
+                let cmnd = $('.js_cccd').val();
+                let ngayNhanXe = $('.js_ngay_nhan_xe').val();
+                let ngayTraXe = $('.js_ngay_tra_xe').val();
 
-                    $('#js_modal_xac_nhan').modal('show');
-                });
+                $('.js_ten_xe_md').html(tenXe);
+                $('.js_loai_xe_md').html(tenLoaiXe);
+                $('.js_bien_so_md').html(bienSo);
+                $('.js_cccd_md').html(cmnd);
+                $('.js_ngay_nhan_xe_md').html(ngayNhanXe);
+                $('.js_ngay_tra_xe_md').html(ngayTraXe);
+                $('.js_don_gia_md').html(`${donGia.toLocaleString("en")} đồng`);
+                $('.js_so_ngay_md').html(days);
+                $('.js_thanh_tien_md').html(`${thanhTien.toLocaleString("en")} đồng`);
 
-                $('.js_btn_xac_nhan').click(function(e) {
-                    e.preventDefault();
-                    const data = {
-                        'xe_bien_so': $('.js_bien_so').val(),
-                        'user_cmnd': $('.js_cccd').val(),
-                        'ngaynhanxe': $('.js_ngay_nhan_xe').val(),
-                        'ngay_tra_xe': $('.js_ngay_tra_xe').val(),
-                        'thanh_tien': thanhTien
-                    };
-
-                    $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            type: "post",
-                            url: "xac-nhan-dat-xe",
-                            data: {
-                                xe_bien_so: data.xe_bien_so,
-                                user_cmnd: data.user_cmnd,
-                                ngay_nhan_xe: data.ngay_nhan_xe,
-                                ngay_tra_xe: data.ngay_tra_xe,
-                                thanh_tien: data.thanh_tien,
-                            },
-                            success: function(response) {
-                                if (!response.error) {
-                                    $('#js_modal_xac_nhan').modal('hide');
-                                    $('#js_modal_thong_bao_success').modal('show');
-                                } else {
-                                    $('#js_modal_xac_nhan').modal('hide');
-                                    $('#js_modal_thong_bao_error').modal('show');
-                                }
-                            }
-                        })
-                        .done(function() {})
-                        .fail(function() {
-                            $('#js_modal_xac_nhan').modal('hide');
-                            $('#js_modal_thong_bao_error').modal('show');
-                        })
-                });
+                $('#js_modal_xac_nhan').modal('show');
             });
+
+            $('.js_btn_xac_nhan').click(function(e) {
+                e.preventDefault();
+                const data = {
+                    'xe_bien_so': $('.js_bien_so').val(),
+                    'user_cmnd': $('.js_cccd').val(),
+                    'ngaynhanxe': $('.js_ngay_nhan_xe').val(),
+                    'ngay_tra_xe': $('.js_ngay_tra_xe').val(),
+                    'thanh_tien': thanhTien
+                };
+
+                $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: "xac-nhan-dat-xe",
+                        data: {
+                            xe_bien_so: data.xe_bien_so,
+                            user_cmnd: data.user_cmnd,
+                            ngay_nhan_xe: data.ngay_nhan_xe,
+                            ngay_tra_xe: data.ngay_tra_xe,
+                            thanh_tien: data.thanh_tien,
+                        },
+                        success: function(response) {
+                            if (!response.error) {
+                                $('#js_modal_xac_nhan').modal('hide');
+                                $('#js_modal_thong_bao_success').modal('show');
+                            } else {
+                                $('#js_modal_xac_nhan').modal('hide');
+                                $('#js_modal_thong_bao_error').modal('show');
+                            }
+                        }
+                    })
+                    .done(function() {})
+                    .fail(function() {
+                        $('#js_modal_xac_nhan').modal('hide');
+                        $('#js_modal_thong_bao_error').modal('show');
+                    })
+            });
+        });
     </script>
 @endpush

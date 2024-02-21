@@ -23,4 +23,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Role', 'idrole', 'idrole');
     }
+
+    public function danhgia()
+    {
+        return $this->hasMany('App\Models\Comment', 'iddanhgia', 'iddanhgia');
+    }
 }

@@ -1,6 +1,10 @@
-<!-- Nguyễn Trường Anh Vũ -->
-
 @extends('layouts.index')
+<head>
+    <title>
+        About US
+    </title>
+    <link rel="icon" type="image/x-icon" href="icons/about-us.png">
+</head>
 @section('content')
     <section id="body" class="m-container">
 

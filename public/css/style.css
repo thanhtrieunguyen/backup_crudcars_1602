@@ -933,8 +933,31 @@ p {
 }
 
 .box1 {
-  padding: 2rem;
+  padding: 24px 36px;
   background: #d0f9db;
-  border-radius: 2rem;
+  border-radius: 1.2rem;
   margin-top: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.m-container-thin {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.m-container-thin .box1 .info {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 4px;
+  gap: 4px;
+  width: calc(100% - 96px);
+}
+
+.comment-desc {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  grid-gap: 8px;
+  gap: 8px;
 }

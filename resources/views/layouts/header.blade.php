@@ -10,9 +10,9 @@
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <form action="tim-kiem" class="form-inline my- my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm xe..." aria-label="Search"
-                    name="q">
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <input class="form-control mr-sm-2" style="width: 200px;" type="search" placeholder="Tìm kiếm xe..."
+                    aria-label="Search" name="q">
+                <button class="btn btn-success my-2 my-sm-0" style="width: 100px;" type="submit">Tìm kiếm</button>
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-1">

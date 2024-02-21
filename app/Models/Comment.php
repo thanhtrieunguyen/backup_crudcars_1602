@@ -7,20 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = ['comment', 'votes', 'spam', 'reply_id', 'page_id', 'users_id'];
-
-    protected $dates = ['created_at', 'updated_at'];
-    protected $table = 'comment';
-
-    public function replies()
-    {
-
-        return $this->hasMany('App\Models\Comment', 'id', 'reply_id');
-
-    }
+    protected $guarded = ['_token'];
+    protected $fillable = [];
+    protected $table = 'danhgia';
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'iduser');
+        return $this->belongsTo('App\Models\User', 'iduser', 'iduser');
+    }
+
+    public function xe()
+    {
+        return $this->belongsTo('App\Models\Xe', 'idxe', 'idxe');
     }
 }

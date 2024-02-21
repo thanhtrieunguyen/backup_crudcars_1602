@@ -15,6 +15,7 @@ use App\Models\Xe;
 use App\Models\DongXe;
 use App\Models\HangXe;
 use App\Models\HinhXe;
+use App\Models\Comment;
 
 class XeController extends Controller
 {
@@ -192,8 +193,8 @@ class XeController extends Controller
     public function show($id)
     {
         $xe = Xe::with('dongXe')->where('idxe', $id)->firstOrFail();
-        // $comments = Comment::where('idxes', $id)->get(); // Lấy các bình luận của xe
-        return view('pages.chitietxe', compact('xe'));
+        $comments = Comment::with('user')->where('idxe', $id)->get(); // Lấy các bình luận của xe
+        return view('pages.chitietxe', compact('xe', 'comments'));
     }
 
 

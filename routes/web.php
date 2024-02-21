@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\XeController;
 use App\Http\Controllers\PageController;
@@ -32,6 +33,8 @@ Route::get('chitietxe/{id}', [XeController::class, 'show'])->name('xe.show');
 
 Route::get('about', [PageController::class, 'getAbout'])->name('pages.about');
 Route::get('contact', [PageController::class, 'getContact'])->name('pages.contact');
+
+Route::post('comment/{id}', [CommentController::class, 'postComment'])->name('comments');
 // ADMIN ROUTE
 // Route::group(['prefix' => 'admin'], function () {
 //     Route::get('/xe', [XeController::class, 'index'])->name('xe.index');
