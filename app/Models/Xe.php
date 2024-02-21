@@ -26,4 +26,9 @@ class Xe extends Model
         return $this->belongsTo('App\Models\HinhXe', 'idhinhxe', 'idhinhxe');
     }
 
+    public function danhgia()
+    {
+        return $this->hasMany('App\Models\Comment', 'iddanhgia', 'iddanhgia');
+    }
+
 }

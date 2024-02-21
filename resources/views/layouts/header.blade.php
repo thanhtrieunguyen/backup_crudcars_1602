@@ -1,30 +1,32 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top shadow border-0">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top border-0">
     <div class="container">
-        <a class="navbar-brand" href="/" ><img style="width: 100px; border-radius: 10px;" src="/upload/slides/logo.png" alt=""></a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="/"><img style="width: 100px; border-radius: 10px;" src="/upload/slides/logo.png"
+                alt=""></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
+            aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <form action="tim-kiem" class="form-inline my- my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm xe..." aria-label="Search" name="q">
-                <button class="btn btn-dark my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <input class="form-control mr-sm-2" style="width: 200px;" type="search" placeholder="Tìm kiếm xe..."
+                    aria-label="Search" name="q">
+                <button class="btn btn-success my-2 my-sm-0" style="width: 100px;" type="submit">Tìm kiếm</button>
             </form>
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-1">
+                <li class="nav-item mr-1">
                     <a class="nav-link" href="/">Trang chủ</a>
                 </li>
-            <li class="nav-item ml-2">
-                    <a class="nav-link" href="/gioi-thieu">Về VietCar</a>
+                <li class="nav-item ml-2">
+                    <a class="nav-link" href="{{ route('pages.about') }}">Về VietCar</a>
                 </li>
-                
+
                 <li class="nav-item ml-2">
                     <a class="nav-link" href="/thue-xe">Thuê xe</a>
                 </li>
-              
-                    <a class="nav-link" href="/lien-he">Liên hệ</a>
+
+                <a class="nav-link" href="{{ route('pages.contact') }}">Liên hệ</a>
                 </li>
 
                 <!-- </li>
@@ -42,21 +44,21 @@
                     @endcan
 
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="/trang-ca-nhan">{{ auth()->user()->ho_ten }}</a>
+                        <a class="nav-link" href="/trang-ca-nhan">{{ auth()->user()->hoten }}</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <form action="{{ route('auth.dang-xuat') }}" method="POST">
+                        <form action="{{ route('auth.dangxuat') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-link text-white">Đăng xuất</button>
+                            <button type="submit" class="btn btn-success">Đăng xuất</button>
                         </form>
                     </li>
                 @endauth
                 @guest
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="/dang-nhap">Đăng nhập</a>
+                        <a class="nav-link" href="{{ route('pages.dangnhap') }}">Đăng nhập</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/dang-ky">Đăng ký</a>
+                        <a class="nav-link" href="{{ route('pages.dangky') }}">Đăng ký</a>
                     </li>
                 @endguest
             </ul>

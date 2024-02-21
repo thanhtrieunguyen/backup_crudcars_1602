@@ -22,13 +22,20 @@
 
     <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
 
-    <link rel="stylesheet" href="css/customize.css">
-
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link type="text/css" rel="stylesheet" href="http://example.com/image-uploader.min.css">
+
+    {{-- icon font --}}
+    <link rel="stylesheet" href="icons/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="icons/fontawesome/css/all.css">
+    <link rel="stylesheet" href="icons/themify-icons/themify-icons.css">
+
+    {{-- CSS Customize --}}
+    <link rel="stylesheet" href="css/customize.css">
+    <link rel="stylesheet" href="css/veVietCar.css">
 </head>
 
-<body class="bg-light" id="page-top" data-spy="scroll" data-offset="50">
+<body class="" id="page-top" data-spy="scroll" data-offset="50">
 
     @include('layouts.header')
     <div class="container py-4" style="min-height: calc(100vh - 166px); margin-top: 56px">
@@ -38,6 +45,13 @@
     @include('layouts.footer')
 
     <!-- Optional JavaScript -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

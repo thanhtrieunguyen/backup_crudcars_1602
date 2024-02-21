@@ -15,6 +15,7 @@ use App\Models\Xe;
 use App\Models\DongXe;
 use App\Models\HangXe;
 use App\Models\HinhXe;
+use App\Models\Comment;
 
 class XeController extends Controller
 {
@@ -173,7 +174,7 @@ class XeController extends Controller
     {
         $xe = Xe::findOrFail($id);
         $urls = json_decode($xe->hinhxe->hinhxe, true);
-        
+
         // Xoá cả hình trong Cloudinary
         foreach ($urls as $url) {
             $public_id = basename($url, '.' . pathinfo($url, PATHINFO_EXTENSION));
@@ -186,6 +187,14 @@ class XeController extends Controller
         $xe->delete();
 
         return back()->with(['thong-bao' => 'Xóa xe ' . $xe->tenxe . ' thành công!', 'type' => 'success']);
+    }
+
+
+    public function show($id)
+    {
+        $xe = Xe::with('dongXe')->where('idxe', $id)->firstOrFail();
+        $comments = Comment::with('user')->where('idxe', $id)->get(); // Lấy các bình luận của xe
+        return view('pages.chitietxe', compact('xe', 'comments'));
     }
 
 
