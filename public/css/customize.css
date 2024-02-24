@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: "Manrope",
         "Encode Sans Expanded",
@@ -18,6 +22,11 @@ body {
         "Droid Sans",
         "Helvetica Neue",
         sans-serif;
+}
+
+a,
+p {
+    text-decoration: none;
 }
 
 pre {
@@ -77,7 +86,7 @@ button {
     max-height: 100px;
 }
 
-/* CSS cho bảng */
+/* CSS cho table */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -192,11 +201,7 @@ span.tag-item {
 }
 
 .detail-car .detail-container .content-detail .info-car-basic .group-name .shared {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     gap: 16px;
 }
@@ -255,7 +260,7 @@ span.tag-item.transmission {
 
 /* END info-car-basic */
 
-/* START CSS ĐẶC ĐIỂM */
+/* START CSS DAC DIEM */
 p {
     margin: 0;
     font-size: 12px;
@@ -309,7 +314,6 @@ h6 {
 
 .wrap-svg {
     line-height: 0;
-    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -532,7 +536,7 @@ h6 {
 
 /* END sidebar-detail */
 
-/* START MÔ TẢ VÀ CÁC TIỆN NGHI KHÁC*/
+/* START MO TA VA CAC TIEN NGHI KHAC */
 .detail-car .detail-container .content-detail .info-car-desc pre {
     position: relative;
     color: #767676;
@@ -562,9 +566,9 @@ pre {
     height: 24px;
 }
 
-/* END MÔ TẢ */
+/* END MO TA */
 
-/* START CHÍNH SÁCH QUY ĐỊNH */
+/* START CHINH SACH QUY DINH */
 .fontWeight-4 {
     font-weight: 400 !important;
 }
@@ -624,7 +628,7 @@ pre {
     gap: 2px;
 }
 
-/* END CHÍNH SÁCH QUY ĐỊNH */
+/* END CHINH SACH QUY DINH */
 
 .navbar-dark .navbar-nav .nav-link {
     color: black;
@@ -644,7 +648,7 @@ nav.navbar {
     background-image: url(https://www.mioto.vn/static/media/header.350aa232.png);
 }
 
-/* START CSS TRANG CHỦ */
+/* START CSS TRANG CHU */
 
 
 
@@ -735,9 +739,18 @@ span.tag-item.delivery {
     object-fit: cover;
 }
 
+.item-car .item-box .img-car .fix-img {
+    padding-bottom: 75%;
+    border-radius: 10px;
+}
+
 .fix-img {
     padding-bottom: 75%;
     border-radius: 10px;
+    position: relative;
+    max-width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
 }
 
 .desc-car p.cost {
@@ -746,5 +759,6 @@ span.tag-item.delivery {
     font-weight: 600;
 }
 
-/* END CSS TRANG CHỦ */
+
+/* END CSS TRANG CHU */
 
