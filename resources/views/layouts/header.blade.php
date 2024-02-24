@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="nav-item ml-2">
-                    <a class="nav-link" href="/thue-xe">Thuê xe</a>
+                    <a class="nav-link" href="{{ route('pages.thuexe') }}">Thuê xe</a>
                 </li>
 
                 <a class="nav-link" href="{{ route('pages.contact') }}">Liên hệ</a>
