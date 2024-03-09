@@ -28,7 +28,7 @@ class SignUpRequest extends FormRequest
             'cccd' => 'unique:users|min:12|max:12',
             'sdt' => 'min:3|max:10',
             'diachi' => 'min:3|max:255',
-            'ngaysinh' => 'required|date|after_or_equal:15 years ago|before_or_equal:today|after_or_equal:80 years ago',
+            'ngaysinh' => 'required|date|',
         ];
     }
 
@@ -44,8 +44,8 @@ class SignUpRequest extends FormRequest
             'hoten.min' => 'Họ tên ít nhất :min ký tự',
             'hoten.max' => 'Họ tên nhiều nhất :max ký tự',
             'cccd.unique' => 'CCCD này đã tồn tại',
-            'cccd.min' => 'CCCD ít nhất :min ký tự',
-            'cccd.max' => 'CCCD nhiều nhất :max ký tự',
+            'cccd.min' => 'CCCD phải có :min số',
+            'cccd.max' => 'CCCD phải có :max số',
             'sdt.min' => 'Số điện thoại ít nhất :min ký tự',
             'sdt.max' => 'Số điện thoại nhiều nhất :max ký tự',
             'diachi.min' => 'Địa chỉ ít nhất :min ký tự',

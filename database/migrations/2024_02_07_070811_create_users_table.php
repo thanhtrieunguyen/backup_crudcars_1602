@@ -15,12 +15,13 @@ return new class extends Migration
             $table->Increments('iduser');
             $table->string('hoten', 255);
             $table->string('email', 100)->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('matkhau', 100);
             $table->string('sdt', 10);
             $table->longText('diachi')->nullable();
             $table->string('cccd', 12);
             $table->Integer('idrole')->unsigned();
-            $table->foreign('idrole')->references('idrole')->on('role')->onDelete('cascade');
+            $table->foreign('idrole')->references('idrole')->on('role')->onDelete('restrict');
             $table->timestamp('created_at')->default(now());
             $table->timestamp('updated_at')->default(now())->useCurrentOnUpdate();
         });

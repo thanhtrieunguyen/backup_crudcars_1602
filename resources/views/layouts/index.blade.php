@@ -33,6 +33,7 @@
 
     {{-- CSS Customize --}}
     <link rel="stylesheet" href="css/customize.css">
+    <link rel="stylesheet" href="css/customize1.css">
     <link rel="stylesheet" href="css/veVietCar.css">
 </head>
 

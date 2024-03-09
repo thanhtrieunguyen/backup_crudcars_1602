@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignUpRequest;
+use Exception;
+use Validator;
 use Illuminate\Http\Request;
 use DateTime;
 use Hash;
@@ -12,6 +14,7 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+
     public function postDangKy(SignUpRequest $request)
     {
         $user = User::create([
@@ -30,7 +33,6 @@ class AuthController extends Controller
 
     public function postDangNhap(LoginRequest $request)
     {
-
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended();
         } else

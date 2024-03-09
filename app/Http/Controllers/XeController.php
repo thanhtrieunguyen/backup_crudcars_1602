@@ -76,7 +76,6 @@ class XeController extends Controller
         ;
     }
 
-
     public function edit($id)
     {
         $xe = Xe::findOrFail($id);
@@ -196,6 +195,7 @@ class XeController extends Controller
         $comments = Comment::with('user')->where('idxe', $id)->get(); // Lấy các bình luận của xe
         return view('pages.chitietxe', compact('xe', 'comments'));
     }
+
 
 
 

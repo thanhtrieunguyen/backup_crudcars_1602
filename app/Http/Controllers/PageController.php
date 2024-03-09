@@ -12,7 +12,6 @@ class PageController extends Controller
     public function getHome()
     {
         $xes = Xe::with('dongXe', 'hangXe')->orderBy('gia', 'desc')->take(8)->get();
-
         // return view('pages.trang-chu', ['xes' => $xes]);
         return view('pages.trangchu', compact('xes'));
     }
@@ -44,5 +43,23 @@ class PageController extends Controller
         $dongXes = DongXe::all();
         $hangXes = HangXe::all();
         return view('pages.thuexe', compact('xes', 'dongXes', 'hangXes'));
+    }
+
+    public function timKiem(Request $request)
+    {
+        $dongXes = DongXe::all();
+        $hangXes = HangXe::all();
+        $query = $request->q;
+        if ($query) {
+            $xes = Xe::with('dongxe', 'hangxe')
+                ->where('tenxe', 'LIKE', '%' . $query . '%')
+                ->orWhere('bienso', 'LIKE', '%' . $query . '%')
+                ->latest()
+                ->paginate(24);
+        } else {
+            $xes = Xe::with('dongxe', 'hangxe')->latest()->paginate(24);
+        }
+
+        return view('pages.timkiem', compact('xes', 'query', 'dongXes', 'hangXes'));
     }
 }
