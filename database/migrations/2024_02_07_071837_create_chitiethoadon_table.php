@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('chitiethoadon', function (Blueprint $table) {
             $table->Increments('idchitiethoadon');
             $table->Integer('idhoadon')->unsigned();
-            $table->foreign('idhoadon')->references('idhoadon')->on('hoadon')->onDelete('cascade');
+            $table->foreign('idhoadon')->references('idhoadon')->on('hoadon')->onDelete('restrict');
             $table->date('ngaythanhtoan')->nullable();
             $table->string('phidv', 255)->nullable();
             $table->string('tongtien', 255);

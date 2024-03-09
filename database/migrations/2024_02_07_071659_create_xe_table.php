@@ -20,11 +20,11 @@ return new class extends Migration {
             $table->string('nhienlieu', 50)->nullable();
             $table->decimal('nhienlieutieuhao_km', 5, 2)->nullable();
             $table->Integer('iddongxe')->unsigned();
-            $table->foreign('iddongxe')->references('iddongxe')->on('dongxe')->onDelete('cascade');
+            $table->foreign('iddongxe')->references('iddongxe')->on('dongxe')->onDelete('restrict');
             $table->Integer('idhangxe')->unsigned();
-            $table->foreign('idhangxe')->references('idhangxe')->on('hangxe')->onDelete('cascade');
+            $table->foreign('idhangxe')->references('idhangxe')->on('hangxe')->onDelete('restrict');
             $table->Integer('idhinhxe')->unsigned();
-            $table->foreign('idhinhxe')->references('idhinhxe')->on('hinhxe')->onDelete('cascade');
+            $table->foreign('idhinhxe')->references('idhinhxe')->on('hinhxe')->onDelete('restrict');
             $table->timestamp('created_at')->default(now());
             $table->timestamp('updated_at')->default(now())->useCurrentOnUpdate();
         });
