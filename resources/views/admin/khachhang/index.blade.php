@@ -26,7 +26,7 @@
                                 <th scope="col">CMND</th>
                                 <th scope="col">Ngày sinh</th>
                                 <th scope="col">Số điện thoại</th>
-                                <th scope="col">Địa chỉ</th>
+                                <th scope="col" style="width: 14rem">Địa chỉ</th>
                                 <th scope="col" class="text-center">Tùy chọn</th>
                             </tr>
                         </thead>

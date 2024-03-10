@@ -43,7 +43,7 @@
                     @endcan
 
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="/trang-ca-nhan">{{ auth()->user()->hoten }}</a>
+                        <a class="nav-link" href="/trangcanhan">{{ auth()->user()->hoten }}</a>
                     </li>
                     <li class="nav-item ml-2">
                         <form action="{{ route('auth.dangxuat') }}" method="POST">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use Validator;
 use Hash;
@@ -24,41 +26,8 @@ class TaiKhoanController extends Controller
     {
         return view('admin.khachhang.create');
     }
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'email' => 'unique:users|min:3|max:255',
-                'hoten' => 'min:3|max:255',
-                'cccd' => 'unique:users|min:12|max:12',
-                'sdt' => 'min:3|max:10',
-                'diachi' => 'min:3|max:255',
-            ],
-            [
-                'email.unique' => 'Email này đã có người sử dụng',
-                'email.min' => 'Email ít nhất :min ký tự',
-                'email.max' => 'Email nhiều nhất :max ký tự',
-                'hoten.min' => 'Họ tên ít nhất :min ký tự',
-                'hoten.max' => 'Họ tên nhiều nhất :max ký tự',
-                'cccd.unique' => 'CCCD này đã tồn tại',
-                'cccd.min' => 'CCCD ít nhất :min ký tự',
-                'cccd.max' => 'CCCD nhiều nhất :max ký tự',
-                'sdt.min' => 'Số điện thoại ít nhất :min ký tự',
-                'sdt.max' => 'Số điện thoại nhiều nhất :max ký tự',
-                'diachi.min' => 'Địa chỉ ít nhất :min ký tự',
-                'diachi.max' => 'Địa chỉ nhiều nhất :max ký tự',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput()->with(['error_register' => 'Loi dang ky']);
-        }
-
-
         $passwordDefault = 123456;
 
         $khachHang = User::create([
@@ -86,34 +55,8 @@ class TaiKhoanController extends Controller
         return view('admin.khachhang.edit', compact('khachHang'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'hoten' => 'min:3|max:255',
-                'cccd' => 'unique:users|min:12|max:12',
-                'sdt' => 'min:3|max:10',
-                'diachi' => 'min:3|max:255',
-            ],
-            [
-                'hoten.min' => 'Họ tên ít nhất :min ký tự',
-                'hoten.max' => 'Họ tên nhiều nhất :max ký tự',
-                'cccd.unique' => 'CCCD này đã tồn tại',
-                'cccd.min' => 'CCCD ít nhất :min ký tự',
-                'cccd.max' => 'CCCD nhiều nhất :max ký tự',
-                'sdt.min' => 'Số điện thoại ít nhất :min ký tự',
-                'sdt.max' => 'Số điện thoại nhiều nhất :max ký tự',
-                'diachi.min' => 'Địa chỉ ít nhất :min ký tự',
-                'diachi.max' => 'Địa chỉ nhiều nhất :max ký tự',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput()->with(['error_register' => 'Loi dang ky']);
-        }
 
         $khachHang = User::findOrFail($id);
 
@@ -122,8 +65,6 @@ class TaiKhoanController extends Controller
         } else {
             $cccdnew = $khachHang->cccd;
         }
-
-
 
         $khachHang->update([
             'hoten' => $request->hoten,
