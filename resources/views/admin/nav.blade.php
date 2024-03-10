@@ -19,8 +19,6 @@
                         <a class="nav-item dropdown-item text-dark" href="{{ route('hangxe.index') }}">Quản
                             lý hãng xe</a>
                     </div>
-
-
                 </li>
             </ul>
 

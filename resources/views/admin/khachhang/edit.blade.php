@@ -4,7 +4,7 @@
     @include('admin.nav')
 
     <div class="row mt-4">
-        <div class="col-6 offset-3">
+        <div class="col-8 offset-2">
             <div class="card rounded-lg border-0 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between align-items-center py-3">
@@ -29,7 +29,9 @@
                         </div>
                         <div class="form-row my-3">
                             <div class="col-md-6">
-                                <label for="hoTen">Họ tên</label>
+                                <label for="hoTen"><strong style="font-weight: 600">Họ tên</strong><strong
+                                        style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong></label>
                                 <input type="text" class="form-control{{ $errors->has('hoten') ? ' is-invalid' : '' }}"
                                     id="hoTen" name="hoten" placeholder="Nhập họ tên" required
                                     value="{{ $khachHang->hoten }}">
@@ -41,10 +43,17 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="cccd">Căn cước công dân</label>
-                                <input type="text" disabled class="form-control{{ $errors->has('cccd') ? ' is-invalid' : '' }}" id="cccd"
-                                    value="{{ $khachHang->cccd }}" name='cccd'>
-                                <a href="#" id="enableInput">Bạn muốn điểu chỉnh CCCD?</a>
+                                <label for="cccd"><strong style="font-weight: 600">Căn cước công dân</strong><strong
+                                        style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong></label>
+                                <input type="text" disabled
+                                    class="w-50 p-3 mr-3 form-control{{ $errors->has('cccd') ? ' is-invalid' : '' }}"
+                                    id="cccd" value="{{ $khachHang->cccd }}" name='cccd' style="display: inline"
+                                    oninput="formatNumber(this)">
+                                <small class="text-muted">Phải có 12 số.</small>
+                                <small class="form-text text-info "><a href="#" id="enableInput"><i>Bạn muốn điểu
+                                            chỉnh CCCD?</i></a></small>
+
                                 @if ($errors->has('cccd'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('cccd') }}</strong>
@@ -54,15 +63,22 @@
                         </div>
                         <div class="form-row my-3">
                             <div class="col-md-6">
-                                <label for="ngaySinh">Ngày sinh (mm/dd/yyyy)</label>
+                                <label for="ngaySinh"><strong style="font-weight: 600">Ngày sinh
+                                        (mm/dd/yyyy)</strong><strong style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong></label>
                                 <input type="date" class="form-control js_my_date_picker" id="ngaySinh" name="ngaysinh"
                                     placeholder="Chọn ngày sinh" required value="{{ $khachHang->ngaysinh }}">
                             </div>
                             <div class="col-md-6">
-                                <label for="soDienThoai">Số điện thoại</label>
-                                <input type="text" class="form-control{{ $errors->has('sdt') ? ' is-invalid' : '' }}"
+                                <label for="soDienThoai"><strong style="font-weight: 600">Số điện thoại </strong><strong
+                                        style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong></label>
+                                <input type="text"
+                                    class="w-50 p-3 mr-3 form-control{{ $errors->has('sdt') ? ' is-invalid' : '' }}"
                                     id="soDienThoai" name="sdt" placeholder="Nhập số điện thoại" required
-                                    value="{{ $khachHang->sdt }}">
+                                    value="{{ $khachHang->sdt }}" style="display:inline" oninput="formatNumber(this)">
+                                <small class="text-muted">Phải có 10 số.</small>
+
 
                                 @if ($errors->has('sdt'))
                                     <span class="invalid-feedback" role="alert">

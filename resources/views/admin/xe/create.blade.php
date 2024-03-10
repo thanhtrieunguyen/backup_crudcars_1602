@@ -133,7 +133,13 @@
                                 <input type="text"
                                     class="form-control{{ $errors->has('nhienlieutieuhao_km') ? ' is-invalid' : '' }}"
                                     id="nhienlieutieuhao_km" name="nhienlieutieuhao_km"
-                                    placeholder="Nhập nhiên liệu tiêu hao" value="{{ old('nhienlieutieuhao_km') }}">
+                                    placeholder="Nhập nhiên liệu tiêu hao" value="{{ old('nhienlieutieuhao_km') }}"
+                                    oninput="formatNumber(this)">
+                                @if ($errors->has('nhienlieutieuhao_km'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('nhienlieutieuhao_km') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
