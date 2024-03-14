@@ -24,6 +24,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role', 'idrole', 'idrole');
     }
 
+    public function hoadon()
+    {
+        return $this->hasMany('App\Models\HoaDon', 'idhoadon', 'idhoadon');
+    }
+
     public function danhgia()
     {
         return $this->hasMany('App\Models\Comment', 'iddanhgia', 'iddanhgia');

@@ -45,6 +45,15 @@ class PageController extends Controller
         return view('pages.thuexe', compact('xes', 'dongXes', 'hangXes'));
     }
 
+    public function getBlog()
+    {
+        return view('pages.blogs');
+    }
+    public function getDulich()
+    {
+        return view('pages.dulich');
+    }
+
     public function timKiem(Request $request)
     {
         $dongXes = DongXe::all();
