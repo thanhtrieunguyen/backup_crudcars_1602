@@ -1,7 +1,7 @@
 <div class="sticky-top" style="top: 60px">
     <ul class="nav justify-content-center bg-white rounded-lg shadow py-2">
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/admin/thong-ke">Thống kê</a>
+            <a class="nav-link text-dark" href="{{ route('admin.thongke')}}">Thống kê</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" href="{{ route('user.index') }}">Quản lý khách hàng</a>
