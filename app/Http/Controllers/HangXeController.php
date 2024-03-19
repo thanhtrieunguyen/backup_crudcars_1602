@@ -9,6 +9,11 @@ use App\Models\HangXe;
 
 class HangXeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+    
     public function index()
     {
         $hangXes = HangXe::latest()->get();

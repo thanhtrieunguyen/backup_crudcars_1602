@@ -16,11 +16,14 @@ use App\Models\DongXe;
 use App\Models\HangXe;
 use App\Models\HinhXe;
 use App\Models\Comment;
+use Illuminate\Http\JsonResponse;
 
 class XeController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('admin');
+
         function convertToEscapedNewlines($text)
         {
             return str_replace("\n", '\n', $text);
@@ -194,6 +197,30 @@ class XeController extends Controller
         $xe = Xe::with('dongXe')->where('idxe', $id)->firstOrFail();
         $comments = Comment::with('user')->where('idxe', $id)->get(); // Lấy các bình luận của xe
         return view('pages.chitietxe', compact('xe', 'comments'));
+    }
+
+    public function getAllXe()
+    {
+        $xe = Xe::select('tenxe', 'bienso')->get();
+        return response()->json($xe);
+    }
+
+    public function getBienSoXe(Request $request)
+    {
+        $tenXe = $request->input('tenxe');
+        $bienSo = Xe::where('tenxe', $tenXe)->pluck('bienso')->toArray();
+        return response()->json($bienSo);
+    }
+
+    public function getDonGia(Request $request)
+    {
+        $bienso = $request->input('bienso');
+        $xe = Xe::where('bienso', $bienso)->first();
+        if ($xe) {
+            return response()->json( $xe->gia);
+        } else {
+            return response()->json(['error' => 'Không tìm thấy xe với tên đã chọn']);
+        }
     }
 
 
