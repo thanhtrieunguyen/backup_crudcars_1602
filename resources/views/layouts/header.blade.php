@@ -38,7 +38,7 @@
 
                     @can('is_admin')
                         <li class="nav-item mr-2">
-                            <a class="nav-link" href="/admin/thong-ke">Quản trị</a>
+                            <a class="nav-link" href="{{ route('admin.thongke') }}">Quản trị</a>
                         </li>
                     @endcan
 

@@ -24,7 +24,7 @@
 
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/admin/giao-dich">Quản lý giao dịch</a>
+            <a class="nav-link text-dark" href="{{route('giaodich.index')}}">Quản lý giao dịch</a>
         </li>
     </ul>
 </div>

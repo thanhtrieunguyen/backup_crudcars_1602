@@ -9,6 +9,10 @@ use App\Models\DongXe;
 
 class DongXeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index()
     {
         $dongXes = DongXe::latest()->get();

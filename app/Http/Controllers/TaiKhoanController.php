@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Validator;
 use Hash;
 use App\Models\User;
 
 class TaiKhoanController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('admin');
-    // }
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
     public function index()
     {
@@ -83,6 +84,15 @@ class TaiKhoanController extends Controller
         $khachHang->delete();
 
         return back()->with(['thong-bao' => 'Xóa khách hàng ' . $khachHang->hoten . ' thành công!', 'type' => 'success']);
+    }
+
+    public function getCCCD(Request $request): JsonResponse
+    {
+        $data = User::select("cccd")
+            ->where('cccd', 'LIKE', '%' . $request->get('query') . '%')
+            ->get();
+
+        return response()->json($data);
     }
 
 

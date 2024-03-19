@@ -122,12 +122,12 @@
         <img width="40px" src="./upload/images/zalopay.png" alt="">
     </div>
     </p>
-    <script src=" script.js"></script>
+    {{-- <script src=" script.js"></script> --}}
 </footer>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="js/carouseller.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="libs/fancybox/jquery.fancybox.min.js"></script>
+{{-- <script src="js/carouseller.js"></script>
+<script src="js/jquery.easing.1.3.js"></script> --}}
+{{-- <script type="text/javascript" src="libs/fancybox/jquery.fancybox.min.js"></script> --}}
 
 <script>
     function formatNumber(input) {

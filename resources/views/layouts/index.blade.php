@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css"
         integrity="sha384-wxqG4glGB3nlqX0bi23nmgwCSjWIW13BdLUEYC4VIMehfbcro/ATkyDsF/AbIOVe" crossorigin="anonymous">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     {{-- link css datepicker --}}
     <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -24,7 +27,6 @@
     <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
 
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link type="text/css" rel="stylesheet" href="http://example.com/image-uploader.min.css">
 
     {{-- icon font --}}
     <link rel="stylesheet" href="icons/fontawesome/css/all.min.css">
@@ -64,11 +66,11 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <script src="js/bootstrap-datepicker.min.js"></script>
+    {{-- <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="js/bootstrap-datepicker.vi.min.js"></script>
 
     <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/dataTables.bootstrap4.min.js"></script> --}}
 
     <script>
         $(document).ready(function() {

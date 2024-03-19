@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DongXeController;
+use App\Http\Controllers\GiaoDichController;
 use App\Http\Controllers\HangXeController;
 use App\Http\Controllers\TaiKhoanController;
 use App\Http\Middleware\LoginMiddleware;
@@ -66,4 +67,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/user', TaiKhoanController::class);
     Route::resource('/dongxe', DongXeController::class);
     Route::resource('/hangxe', HangXeController::class);
+    // Route::resource('/giaodich', GiaoDichController::class);
+    Route::get('/getall-xe', [XeController::class, 'getAllXe'])->name('getall-xe');
+    Route::get('/getbien-so-xe', [XeController::class, 'getBienSoXe'])->name('getbien-so-xe');
+    Route::get('get-cccd', [TaiKhoanController::class, 'getCCCD'])->name('getcccd');
+    Route::get('/get-don-gia', [XeController::class, 'getDonGia'])->name('get-don-gia');
+    Route::get('/giaodich/create', [GiaoDichController::class, 'create'])->name('giaodich.create');
+    Route::post('/giaodich/store', [GiaoDichController::class, 'store'])->name('giaodich.store');
+    Route::get('/giaodich/edit/{id}', [GiaoDichController::class, 'create'])->name('giaodich.edit');
+    Route::get('/giaodich/destroy', [GiaoDichController::class, 'create'])->name('giaodich.destroy');
+    Route::get('/giaodich', [GiaoDichController::class, 'index'])->name('giaodich.index');
 });
+

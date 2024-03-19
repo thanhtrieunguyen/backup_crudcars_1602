@@ -24,13 +24,18 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role', 'idrole', 'idrole');
     }
 
+    public function giaodich()
+    {
+        return $this->hasMany('App\Models\GiaoDich', 'iduser', 'iduser');
+    }
+
     public function hoadon()
     {
-        return $this->hasMany('App\Models\HoaDon', 'idhoadon', 'idhoadon');
+        return $this->hasMany('App\Models\HoaDon', 'iduser', 'iduser');
     }
 
     public function danhgia()
     {
-        return $this->hasMany('App\Models\Comment', 'iddanhgia', 'iddanhgia');
+        return $this->hasMany('App\Models\Comment', 'iduser', 'iduser');
     }
 }
