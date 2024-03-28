@@ -57,8 +57,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -89,15 +89,15 @@
                 );
             });
             //Datepicker
-            $('.js_my_date_picker').datepicker({
-                format: 'dd/mm/yyyy',
-                language: 'vi',
-                weekStart: 1,
-                endDate: new Date(),
-                autoclose: true
-            });
+            // $('.js_my_date_picker').datepicker({
+            //     format: 'dd/mm/yyyy',
+            //     language: 'vi',
+            //     weekStart: 1,
+            //     endDate: new Date(),
+            //     autoclose: true
+            // });
             //Datatable
-            $('#myTable').DataTable();
+            // $('#myTable').DataTable();
         });
     </script>
     @yield('script')

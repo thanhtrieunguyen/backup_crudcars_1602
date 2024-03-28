@@ -45,4 +45,18 @@ class AuthController extends Controller
 
         return back();
     }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        $user->update([
+            'hoten' => $request->hoten,
+            'ngaysinh' => $request->ngaysinh,
+            'sdt' => $request->sdt,
+            'diachi' => $request->diachi
+        ]);
+
+        return back()->with(['thong-bao' => 'Cập nhật thông tin thành công!', 'type' => 'success']);
+    }
 }
