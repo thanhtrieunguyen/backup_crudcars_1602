@@ -6,6 +6,8 @@ use App\Models\DongXe;
 use App\Models\HangXe;
 use Illuminate\Http\Request;
 use App\Models\Xe;
+use App\Models\GiaoDich;
+use App\Models\HoaDon;
 
 class PageController extends Controller
 {
@@ -70,5 +72,26 @@ class PageController extends Controller
         }
 
         return view('pages.timkiem', compact('xes', 'query', 'dongXes', 'hangXes'));
+    }
+
+    public function getTrangCaNhan()
+    {
+        $khachHang = auth()->user();
+        $giaoDichs = GiaoDich::with('xe', 'user')
+            ->join('users', 'giaodich.iduser', '=', 'users.iduser')
+            ->where('cccd', $khachHang->cccd)
+            ->orderBy('giaodich.created_at', 'DESC')
+            ->get();
+
+
+        return view('pages.trang-ca-nhan', compact('khachHang', 'giaoDichs'));
+    }
+
+    public function getTrangThanhToan($id)
+    {
+        $giaoDich = GiaoDich::findOrFail($id);
+        $hoaDon = $giaoDich->hoadon;
+
+        return view('pages.thanhtoan', compact('hoaDon'));
     }
 }

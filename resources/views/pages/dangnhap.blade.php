@@ -1,6 +1,32 @@
 @extends('layouts.index')
 
 @section('content')
+    <style>
+        .sign-up__divider {
+            color: #969EA2;
+            text-align: center;
+            font-size: 14px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+        }
+
+        .sign-up__divider::before,
+        .sign-up__divider::after {
+            content: '';
+            height: 1px;
+            flex: 1 0 0;
+            background-color: #DADFE2;
+        }
+
+        .sign-up__divider::before {
+            margin-right: 20px;
+        }
+
+        .sign-up__divider::after {
+            margin-left: 20px;
+        }
+    </style>
     <div class="row my-4">
         <div class="col-6 offset-3">
             <div class="card border-0 shadow">
@@ -32,7 +58,12 @@
                             @endif
                         </div>
                         <button type="submit" class="btn btn-dark btn-block mt-4">Đăng nhập</button>
-
+                        <p class="sign-up__divider mt-3">or</p>
+                        <div class="my-2" style="display: grid; justify-content: center;">
+                            <a href="{{ route('auth.google') }}">
+                                <img width="200px" src="./upload/images/login.png">
+                            </a>
+                        </div>
                     </form>
 
                 </div>

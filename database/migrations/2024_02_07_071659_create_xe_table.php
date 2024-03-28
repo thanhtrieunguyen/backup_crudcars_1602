@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('truyendong', 50)->nullable();
             $table->string('nhienlieu', 50)->nullable();
             $table->decimal('nhienlieutieuhao_km', 5, 2)->nullable();
+            $table->boolean('tinhtrang')->nullable()->default(false);
             $table->Integer('iddongxe')->unsigned();
             $table->foreign('iddongxe')->references('iddongxe')->on('dongxe')->onDelete('restrict');
             $table->Integer('idhangxe')->unsigned();

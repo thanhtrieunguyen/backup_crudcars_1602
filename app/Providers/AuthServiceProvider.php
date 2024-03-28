@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('is_admin', function ($user) {
             return $user->idrole == 1;
         });
-        Gate::define('is_khachhang', function ($user) {
+        Gate::define('is_user', function ($user) {
             return $user->idrole == 2;
         });
     }
