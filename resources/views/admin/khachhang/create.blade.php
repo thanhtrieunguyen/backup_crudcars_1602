@@ -70,7 +70,7 @@
                                 <label for="ngaySinh"><strong style="font-weight: 600">Ngày sinh</strong><strong
                                         style="font-weight: 600" class="important"
                                         aria-label="Required">(*)</strong></label>
-                                <input type="date" class="form-control js_my_date_picker" id="ngaySinh" name="ngaysinh"
+                                <input type="date" class="form-control" id="ngaySinh" name="ngaysinh"
                                     placeholder="Chọn ngày sinh" required value="{{ old('ngaysinh') }}">
                             </div>
                             <div class="col-md-6">
@@ -111,5 +111,4 @@
             </div>
         </div>
     </div>
-
 @endsection

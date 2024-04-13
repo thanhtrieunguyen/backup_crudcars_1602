@@ -38,7 +38,6 @@
                             @php
                                 $dem = 0;
                             @endphp
-                            dd($giaoDichs);
                             @forelse ($giaoDichs as $giaoDich)
                                 <tr>
                                     <th scope="row">{{ ++$dem }}</th>
@@ -49,27 +48,24 @@
                                     <td>{{ date('d/m/Y', strtotime($giaoDich->ngaynhanxe)) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($giaoDich->ngaytraxe)) }}</td>
                                     <td>{{ number_format($giaoDich->tongtien) }} đồng</td>
-                                    <td>{{ $giaoDich->tinhtrang == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</td>
+                                    <td>{{ $giaoDich->tinhtranggiaodich == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</td>
                                     <td>
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" {{ $giaoDich->tinhtrang == 0 ? '' : 'checked' }}
-                                                giaodich-id="{{ $giaoDich->id }}"
+                                            <input type="checkbox" {{ $giaoDich->tinhtranggiaodich == 0 ? '' : 'checked' }}
+                                                giaodich-id="{{ $giaoDich->idgiaodich }}"
                                                 class="custom-control-input js_checkbox_tinhtrang"
-                                                id="checkBox_{{ $giaoDich->id }}">
-                                            <label class="custom-control-label" for="checkBox_{{ $giaoDich->id }}"></label>
+                                                id="checkBox_{{ $giaoDich->idgiaodich }}">
+                                            <label class="custom-control-label"
+                                                for="checkBox_{{ $giaoDich->idgiaodich }}"></label>
                                         </div>
                                     </td>
-                                    <td class="text-center">
-                                        {{-- @php
-                                            dd($giaoDich->idchitiethoadon);
-                                        @endphp --}}
+                                    <td class="text-center" style="display: flex; justify-content: center">
                                         <a href="{{ route('giaodich.edit', $giaoDich->idgiaodich) }}"
-                                            class="text-primary mr-3">Cập nhật</a>
+                                            class="text-primary mr-3"><i class="fa fa-edit"></i>Cập nhật</a>
                                         <a href="#" class="text-danger js_btn_xoa_giao_dich"
-                                            giaodich-id="{{ $giaoDich->id }}">Xóa</a>
-                                        <form id="js_form_xoa_giao_dich_{{ $giaoDich->idchitiethoadon }}"
-                                            action="{{ route('giaodich.destroy', $giaoDich->idchitiethoadon) }}"
-                                            method="POST">
+                                            giaodich-id="{{ $giaoDich->idgiaodich }}"><i class="fa fa-trash"></i>Xóa</a>
+                                        <form id="js_form_xoa_giao_dich_{{ $giaoDich->idgiaodich }}"
+                                            action="{{ route('giaodich.destroy', $giaoDich->idgiaodich) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                         </form>
@@ -97,21 +93,24 @@
                 let giaoDichId = $(this).attr('giaodich-id')
                 let tinhTrang;
                 (checked) ? tinhTrang = 1: tinhTrang = 0;
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "post",
-                    url: "admin/update-tinh-trang-giaodich",
-                    data: {
-                        id: giaoDichId,
-                        tinh_trang: tinhTrang
-                    },
-                    success: function(response) {
-                        console.log(response);
-                    }
-                });
+                if (confirm('Bạn có chắc chắn muốn thay đổi trạng thái của giao dịch không?')) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: "admin/update-tinh-trang-giao-dich",
+                        data: {
+                            idgiaodich: giaoDichId,
+                            tinhtranggiaodich: tinhTrang
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        }
+                    });
+                } else {
+                    // 
+                }
             });
 
             $('body').on('click', '.js_btn_xoa_giao_dich', function(e) {

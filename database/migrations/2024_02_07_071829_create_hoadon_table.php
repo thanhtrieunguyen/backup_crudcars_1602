@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('hoadon', function (Blueprint $table) {
             $table->Increments('idhoadon');
             $table->Integer('idgiaodich')->unsigned();
-            $table->foreign('idgiaodich')->references('iduser')->on('users')->onDelete('restrict');
+            $table->foreign('idgiaodich')->references('idgiaodich')->on('giaodich')->onDelete('restrict');
             $table->Integer('iduser')->unsigned();
             $table->foreign('iduser')->references('iduser')->on('users')->onDelete('restrict');
             $table->Integer('idxe')->unsigned();

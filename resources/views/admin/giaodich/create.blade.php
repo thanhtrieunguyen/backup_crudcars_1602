@@ -21,16 +21,16 @@
                         @csrf
                         <div class="form-group">
                             <label for="tenxe">Tên xe</label>
-                            <select class="form-control" id="tenxe" name="tenxe"></select>
+                            <select class="form-control" id="tenxe" name="tenxe" required></select>
                         </div>
                         <div class="form-group">
                             <label for="bienso">Biển số xe</label>
-                            <select class="form-control" id="bienso" name="bienso"></select>
+                            <select class="form-control" id="bienso" name="bienso" required></select>
                         </div>
                         <div class="form-group">
-                            <label for="cmnd">CCCD người thuê</label>
+                            <label for="cccd">CCCD người thuê</label>
                             <input type="text" class="form-control typeahead" id="searchcccd" name="cccd"
-                                placeholder="Tìm CMND người thuê" required>
+                                placeholder="Tìm CCCD người thuê" required>
                         </div>
                         <div class="form-row my-3">
                             <div class="col-md-6">
