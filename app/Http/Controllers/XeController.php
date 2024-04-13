@@ -8,19 +8,20 @@ use Validator;
 use Illuminate\Support\Str;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-// IMAGE==========
-// ===============
 use Illuminate\Http\Request;
 use App\Models\Xe;
 use App\Models\DongXe;
 use App\Models\HangXe;
 use App\Models\HinhXe;
 use App\Models\Comment;
+use Illuminate\Http\JsonResponse;
 
 class XeController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('admin')->except('show', 'filter');
+
         function convertToEscapedNewlines($text)
         {
             return str_replace("\n", '\n', $text);
@@ -75,7 +76,6 @@ class XeController extends Controller
         return back()->with(['thong-bao' => 'Thêm xe ' . $xe->tenxe . ' thành công!', 'type' => 'success'])
         ;
     }
-
 
     public function edit($id)
     {
@@ -196,6 +196,55 @@ class XeController extends Controller
         $comments = Comment::with('user')->where('idxe', $id)->get(); // Lấy các bình luận của xe
         return view('pages.chitietxe', compact('xe', 'comments'));
     }
+
+    public function getAllXe()
+    {
+        $xe = Xe::select('tenxe', 'bienso')->get();
+        return response()->json($xe);
+    }
+
+    public function getBienSoXe(Request $request)
+    {
+        $tenXe = $request->input('tenxe');
+        $bienSo = Xe::where('tenxe', $tenXe)->pluck('bienso')->toArray();
+        return response()->json($bienSo);
+    }
+
+    public function getDonGia(Request $request)
+    {
+        $bienso = $request->input('bienso');
+        $xe = Xe::where('bienso', $bienso)->first();
+        if ($xe) {
+            return response()->json($xe->gia);
+        } else {
+            return response()->json(['error' => 'Không tìm thấy xe với tên đã chọn']);
+        }
+    }
+
+    public function filter(Request $request)
+    {
+        $dongXeId = $request->query('dongxe');
+        $hangXeId = $request->query('hangxe');
+
+        $dongXes = DongXe::select('iddongxe', 'tendongxe')->get();
+        $hangXes = HangXe::select('idhangxe', 'tenhangxe')->get();
+        
+        $xes = Xe::query();
+
+        if ($dongXeId != "None") {
+            $xes->where('iddongxe', $dongXeId);
+        }
+
+        if ($hangXeId != "None") {
+            $xes->where('idhangxe', $hangXeId);
+        }
+
+        $xes = $xes->paginate(10);
+
+        // Trả về view với danh sách xe đã lọc
+        return view('pages.thuexe', compact('xes', 'dongXes', 'hangXes'));
+    }
+
 
 
 

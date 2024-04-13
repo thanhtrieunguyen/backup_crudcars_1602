@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: "Manrope",
         "Encode Sans Expanded",
@@ -18,6 +22,11 @@ body {
         "Droid Sans",
         "Helvetica Neue",
         sans-serif;
+}
+
+a,
+p {
+    text-decoration: none;
 }
 
 pre {
@@ -77,7 +86,7 @@ button {
     max-height: 100px;
 }
 
-/* CSS cho bảng */
+/* CSS cho table */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -192,11 +201,7 @@ span.tag-item {
 }
 
 .detail-car .detail-container .content-detail .info-car-basic .group-name .shared {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     gap: 16px;
 }
@@ -221,6 +226,14 @@ span.tag-item {
 
 span.tag-item.non-mortgage {
     background: #dff5e7;
+}
+
+span.tag-item.non-mortgage-elec {
+    background: #e4dff5;
+}
+
+span.tag-item.non-mortgage-oil {
+    background: #f5f5df;
 }
 
 span.tag-item.transmission {
@@ -255,7 +268,7 @@ span.tag-item.transmission {
 
 /* END info-car-basic */
 
-/* START CSS ĐẶC ĐIỂM */
+/* START CSS DAC DIEM */
 p {
     margin: 0;
     font-size: 12px;
@@ -309,7 +322,6 @@ h6 {
 
 .wrap-svg {
     line-height: 0;
-    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -450,11 +462,9 @@ h6 {
     vertical-align: middle;
     cursor: pointer;
     white-space: nowrap;
-    color: #000;
     font-weight: 700;
     padding: 8px 16px;
     border-radius: 8px;
-    color: white;
 }
 
 .width-100 {
@@ -532,7 +542,7 @@ h6 {
 
 /* END sidebar-detail */
 
-/* START MÔ TẢ VÀ CÁC TIỆN NGHI KHÁC*/
+/* START MO TA VA CAC TIEN NGHI KHAC */
 .detail-car .detail-container .content-detail .info-car-desc pre {
     position: relative;
     color: #767676;
@@ -562,9 +572,9 @@ pre {
     height: 24px;
 }
 
-/* END MÔ TẢ */
+/* END MO TA */
 
-/* START CHÍNH SÁCH QUY ĐỊNH */
+/* START CHINH SACH QUY DINH */
 .fontWeight-4 {
     font-weight: 400 !important;
 }
@@ -624,7 +634,7 @@ pre {
     gap: 2px;
 }
 
-/* END CHÍNH SÁCH QUY ĐỊNH */
+/* END CHINH SACH QUY DINH */
 
 .navbar-dark .navbar-nav .nav-link {
     color: black;
@@ -644,7 +654,7 @@ nav.navbar {
     background-image: url(https://www.mioto.vn/static/media/header.350aa232.png);
 }
 
-/* START CSS TRANG CHỦ */
+/* START CSS TRANG CHU */
 
 
 
@@ -735,9 +745,18 @@ span.tag-item.delivery {
     object-fit: cover;
 }
 
+.item-car .item-box .img-car .fix-img {
+    padding-bottom: 75%;
+    border-radius: 10px;
+}
+
 .fix-img {
     padding-bottom: 75%;
     border-radius: 10px;
+    position: relative;
+    max-width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
 }
 
 .desc-car p.cost {
@@ -746,5 +765,96 @@ span.tag-item.delivery {
     font-weight: 600;
 }
 
-/* END CSS TRANG CHỦ */
 
+/* END CSS TRANG CHU */
+
+.gsi-material-button {
+    background-color: WHITE;
+    background-image: none;
+    border: 1px solid #747775;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #1f1f1f;
+    cursor: pointer;
+    font-family: 'Roboto', arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    letter-spacing: 0.25px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    text-align: center;
+    transition: background-color .218s, border-color .218s, box-shadow .218s;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    max-width: 400px;
+    min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+    height: 20px;
+    margin-right: 12px;
+    min-width: 20px;
+    width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+    flex-grow: 1;
+    font-family: 'Roboto', arial, sans-serif;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+    transition: opacity .218s;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.gsi-material-button:disabled {
+    cursor: default;
+    background-color: #ffffff61;
+    border-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+    opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+    opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state,
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+    background-color: #303030;
+    opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+    background-color: #303030;
+    opacity: 8%;
+}

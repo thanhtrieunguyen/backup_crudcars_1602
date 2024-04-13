@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,12 +14,15 @@ return new class extends Migration
             $table->Increments('iduser');
             $table->string('hoten', 255);
             $table->string('email', 100)->unique();
-            $table->string('matkhau', 100);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password', 100);
             $table->string('sdt', 10);
             $table->longText('diachi')->nullable();
             $table->string('cccd', 12);
+            $table->date('ngaysinh');
+            $table->string('google_id')->nullable();
             $table->Integer('idrole')->unsigned();
-            $table->foreign('idrole')->references('idrole')->on('role')->onDelete('cascade');
+            $table->foreign('idrole')->references('idrole')->on('role')->onDelete('restrict');
             $table->timestamp('created_at')->default(now());
             $table->timestamp('updated_at')->default(now())->useCurrentOnUpdate();
         });

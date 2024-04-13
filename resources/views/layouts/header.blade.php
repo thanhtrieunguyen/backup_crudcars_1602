@@ -9,9 +9,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="myNavbar">
-            <form action="tim-kiem" class="form-inline my- my-lg-0">
+            <form action="{{ route('pages.timkiem') }}" class="form-inline my- my-lg-0">
                 <input class="form-control mr-sm-2" style="width: 200px;" type="search" placeholder="Tìm kiếm xe..."
-                    aria-label="Search" name="q">
+                    aria-label="Search" name="q" id="search" value="{{ old('search') }}">
                 <button class="btn btn-success my-2 my-sm-0" style="width: 100px;" type="submit">Tìm kiếm</button>
             </form>
             <ul class="navbar-nav ml-auto">
@@ -23,14 +23,13 @@
                 </li>
 
                 <li class="nav-item ml-2">
-                    <a class="nav-link" href="/thue-xe">Thuê xe</a>
+                    <a class="nav-link" href="{{ route('pages.thuexe') }}">Thuê xe</a>
                 </li>
 
                 <a class="nav-link" href="{{ route('pages.contact') }}">Liên hệ</a>
                 </li>
 
                 <!-- </li>
-              
                     <a class="nav-link" href="/blo-g">Blog</a>
                 </li> -->
             </ul>
@@ -39,12 +38,12 @@
 
                     @can('is_admin')
                         <li class="nav-item mr-2">
-                            <a class="nav-link" href="/admin/thong-ke">Quản trị</a>
+                            <a class="nav-link" href="{{ route('admin.thongke') }}">Quản trị</a>
                         </li>
                     @endcan
 
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="/trang-ca-nhan">{{ auth()->user()->hoten }}</a>
+                        <a class="nav-link" href="/trangcanhan">{{ auth()->user()->hoten }}</a>
                     </li>
                     <li class="nav-item ml-2">
                         <form action="{{ route('auth.dangxuat') }}" method="POST">

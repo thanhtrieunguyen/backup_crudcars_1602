@@ -1,0 +1,316 @@
+/* START CSS TRANG THUE XE */
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.product-item {
+    border: 1px solid rgb(217, 208, 208);
+    padding: 10Px 10px;
+    border-radius: 12px;
+    background-color: white;
+    position: relative;
+}
+
+ul.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+}
+
+ul.product li {
+    flex-basis: 25%;
+    padding-left: 15px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+ul.product li img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul.product li .product-top {
+    position: relative;
+    overflow: hidden;
+}
+
+ul.product li .product-top .product-thumb {
+    display: block;
+    border-radius: 12px;
+}
+
+ul.product li:hover .product-top .product-thumb img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+
+}
+
+ul.product li .product-top .product-thumb img {
+    display: block;
+}
+
+ul.product li .product-top a.rent-now {
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    background-color: #446084;
+    color: #fff;
+    padding: 10px 0px;
+    position: absolute;
+    bottom: -42px;
+    width: 100%;
+    transition: 0.25s ease-in-out;
+
+}
+
+ul.product li:hover a.rent-now {
+    bottom: 0px;
+}
+
+ul.product li .product-info {
+    padding: 12px 0px;
+
+}
+
+ul.product li .product-info a {
+    display: block;
+    text-decoration: none;
+}
+
+ul.product li .product-info div.product-cat {
+    font-size: 7px;
+    text-transform: uppercase;
+    color: #9e9e9e;
+    padding: 3px 0px;
+}
+
+ul.product li .product-info div.product-name {
+    color: #334862;
+    padding: 3px 0px;
+    font-size: 8px;
+}
+
+ul.product li .product-info div.product-name p {
+    color: #000;
+    font-size: 0.90rem;
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+ul.product li .product-info .product-price {
+    color: grey;
+    padding: 2px 0px;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 10px;
+}
+
+.product-price .price .price-special {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0 4px;
+    color: #5fcf86;
+}
+
+.product-top .fix-img {
+    padding-bottom: 75%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.label-pos {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    font-size: .625rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.label-pos span {
+    padding: 4px 8px;
+    border-radius: 100px;
+    background: rgba(12, 12, 12, .5);
+    width: fit-content;
+}
+
+.label-pos span.rent {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    grid-gap: 2px;
+    gap: 2px;
+}
+
+
+.product-item .product-info .group-total {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.product-item .product-info .group-total .info {
+    margin-right: 4px;
+}
+
+.product-item .product-info .group-total span.info {
+    color: #767676;
+}
+
+.product-item .product-info .group-total span {
+    font-size: 0.775rem;
+}
+
+.filter-section.fixed {
+    position: fixed;
+    top: 74px;
+    padding-top: 15px;
+    width: 90%;
+    z-index: 999;
+    transition: all .3s ease 0s;
+    background-color: white;
+    box-shadow: 0 12px 12px 4px rgba(0, 0, 0, .08);
+    border-radius: 12px;
+}
+
+.filter-section .filter-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    gap: 16px;
+    padding: 0 0 16px;
+    width: 90%;
+}
+
+.filter-section .filter-container .filter-dropdown {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 16px;
+    gap: 16px;
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown {
+    display: flex;
+    grid-gap: 16px;
+    gap: 16px;
+    position: relative;
+    width: calc(100% - 98px);
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .item-dropdown {
+    position: relative;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .item-dropdown.reset-item .item-dropdown__wrap {
+    padding: 4px;
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .item-dropdown__wrap .wrap-svg svg {
+    width: 20px;
+    height: 20px;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+.swiper-pointer-events {
+    touch-action: pan-y;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: initial;
+}
+
+.swiper-android .swiper-slide,
+.swiper-wrapper {
+    transform: translateZ(0);
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .swiper-list-filter .swiper-slide {
+    width: fit-content;
+    z-index: 1;
+}
+
+.swiper-backface-hidden .swiper-slide {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .item-dropdown {
+    position: relative;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .item-dropdown__wrap {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    grid-gap: 4px;
+    gap: 4px;
+    border-radius: 100px;
+    border: 1px solid #aaa;
+    padding: 4px 8px;
+}
+
+.wrap-svg {
+    line-height: 0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.filter-section .filter-container .filter-dropdown .list-dropdown .item-dropdown__wrap p {
+    font-size: 14px;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+}
+
+.filter-section .filter-container .filter-dropdown .btn {
+    padding: 4px 8px;
+    font-size: 14px;
+    background-color: #fff;
+    border-color: #aaa;
+}
+
+
+/* END CSS TRANG THUE XE */

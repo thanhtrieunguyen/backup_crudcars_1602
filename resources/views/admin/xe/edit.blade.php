@@ -23,8 +23,9 @@
                         @method('PUT')
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="loaiXe">Dòng xe</label>
-                                <strong style="font-weight: 600" class="important" aria-label="Required">(*)</strong>
+                                <label for="loaiXe">Dòng xe<strong style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong>
+                                </label>
                                 <select class="form-control{{ $errors->has('iddongxe') ? ' is-invalid' : '' }}"
                                     name="iddongxe" id="dongXe">
                                     <option selected disabled>Chọn dòng xe</option>
@@ -43,8 +44,9 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label>Hãng xe</label>
-                                <strong style="font-weight: 600" class="important" aria-label="Required">(*)</strong>
+                                <label>Hãng xe<strong style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong>
+                                </label>
                                 <select class="form-control{{ $errors->has('idhangxe') ? ' is-invalid' : '' }}"
                                     name="idhangxe" id="hangXe" onchange="hideErrorAndClass()">
                                     <option selected disabled>Chọn hãng xe</option>
@@ -64,8 +66,9 @@
                         </div>
                         <div class="form-row my-2">
                             <div class="col-md-12">
-                                <label for="tenXe">Tên xe</label>
-                                <strong style="font-weight: 600" class="important" aria-label="Required">(*)</strong>
+                                <label for="tenXe">Tên xe<strong style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong>
+                                </label>
                                 <input type="text" class="form-control{{ $errors->has('tenxe') ? ' is-invalid' : '' }}"
                                     id="tenXe" name="tenxe" placeholder="Nhập tên xe" value="{{ $xe->tenxe }}">
 
@@ -80,13 +83,12 @@
                         <div class="form-row my-2">
 
                             <div class="col-md-6">
-                                <label for="bienSo">Biển số xe</label>
-                                <strong style="font-weight: 600" class="important" aria-label="Required">(*)</strong>
+                                <label for="bienSo">Biển số xe<strong style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong>
+                                </label>
                                 <input type="text" class="form-control{{ $errors->has('bienso') ? ' is-invalid' : '' }}"
-                                    id="bienSo" name="bienso" placeholder="Nhập biển số xe" disabled
+                                    id="bienSo" name="bienso" placeholder="Nhập biển số xe"
                                     value="{{ $xe->bienso }}">
-                                <a href="#" id="adjustLink" style="font-size: 12px"><em>Bạn muốn điều chỉnh biển số
-                                        xe?</em></a>
 
                                 @if ($errors->any())
                                     <span class="invalid-feedback" role="alert">
@@ -96,8 +98,9 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="gia">Giá thuê</label>
-                                <strong style="font-weight: 600" class="important" aria-label="Required">(*)</strong>
+                                <label for="gia">Giá thuê<strong style="font-weight: 600" class="important"
+                                        aria-label="Required">(*)</strong>
+                                </label>
                                 <input type="text" class="form-control{{ $errors->has('gia') ? ' is-invalid' : '' }}"
                                     id="gia" name="gia" placeholder="Nhập giá thuê" value="{{ $xe->gia }}"
                                     oninput="formatCurrency(this)">
@@ -164,8 +167,9 @@
                         </div>
                         <div class="d-flex flex-row justify-content-between align-items-center">
                             <div class="form-group">
-                                <label for="inputHinh">Chọn hình</label>
-                                <em style="font-weight: 200" class="" aria-label="Required">(optional)</em>
+                                <label for="inputHinh">Chọn hình<em style="font-weight: 200" class=""
+                                        aria-label="Required">(optional)</em>
+                                </label>
                                 <input type="file" class="form-control-file" id="inputHinh" name="hinhxe[]" multiple>
                                 <div class="btn-reset">
                                     <button type="button" onclick="resetFileInput()">Xoá hình</button>

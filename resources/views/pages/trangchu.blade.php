@@ -1,8 +1,10 @@
 @extends('layouts.index')
 
+<head>
+    <link rel="icon" type="image/x-icon" href="upload/slides/car.png">
+</head>
 @section('content')
     <link rel="stylesheet" href="css/style.css">
-
     <marquee>VietCar-Dịch cho thuê xe 4-7-16 chỗ hàng đầu Việt Nam.Thông báo chương trình đồ án cơ sở ngành năm 2023-2024
         bắt đầu từ ngày 1/1/2024 đến hết ngày 30/5/2024</marquee>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -45,83 +47,15 @@
             </a>
         </div>
 
-        <div class="banner__search-option">
-            <div class="option">
-                <div class="option-item active">
-                    <i class='bx bx-car'></i>
-                    <p>Xe tự lái</p>
-                </div>
-                <div class="option-item active">
-                    <i class='bx bx-car'></i>
-                    <p>Xe có tài xế</p>
-                </div>
-                <div class="option-item active">
-                    <i class='bx bx-car'></i>
-                    <p>Thuê xe dài hạn</p>
-                </div>
-            </div>
-            <div class="search">
-                <div class="search-form">
-                    <div class="search-form__item time">
-                        <div class="title">
-                            <i class='bx bx-current-location'></i>
-                            <span>Địa điểm</span>
-                        </div>
-                        <div class="choose">
-                            <input class="input-search" type="text" placeholder="Bạn muốn đi đâu?">
-                            <div class="autobox">
-                                <li>Hồ Chí Minh</li>
-                                <li>Hà Nội</li>
-                                <li>Hải Phòng</li>
-                                <li>Đà Nẵng</li>
-                                <li>Cần Thơ</li>
-                                <li>Vĩnh Long</li>
-                                <li>Bến Tre</li>
-                                <li>Đồng Tháp</li>
-                                <li>Long An</li>
-                                <li>Bình Dương</li>
-                                <li>Cà Mau</li>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- <div class="vertical-line"></div> -->
-
-                    <div class="search-form__item time">
-                        <div class="title">
-                            <i class='bx bx-calendar'></i>
-                            <span>Bắt đầu</span>
-                        </div>
-                        <div class="choose">
-                            <input type="text" placeholder="Ngày bắt đầu">
-                        </div>
-                    </div>
-
-                    <div class="vertical-line"></div>
-
-                    <div class="search-form__item time">
-                        <div class="title">
-                            <i class='bx bx-calendar'></i>
-                            <span>Kết thúc</span>
-                        </div>
-                        <div class="choose">
-                            <input type="text" placeholder="Ngày kết thúc">
-                        </div>
-                    </div>
-
-                    <a href="#" class="find-car">Tìm&nbspxe</a>
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <div class="row mt-5">
         <div class="col-12 my-3">
             <h4 class="text-center text-uppercase lead display-4">Xe tốt nhất</h4>
         </div>
-        @foreach ($xes as $xe)
-            <div class="col-md-4 mb-4">
+        <ul class="product" style="justify-content: flex-start">
+            @foreach ($xes as $xe)
                 @php
                     $array = json_decode($xe->hinhxe->hinhxe);
                     $img1 = null;
@@ -133,51 +67,64 @@
                         }
                     }
                 @endphp
-
-                <div class="card shadow rounded-lg border-0 overflow-hidden">
-                    <a href="{{ route('xe.show', ['id' => $xe->idxe]) }}" target="_blank" class="fix-img">
-                        <img src="{{ $img1 }}" class="" alt="{{ $xe->tenxe }}"
-                            style="width: 100%; height:250px ">
-                    </a>
-                    <div class="card-body desc-car">
-                        <a href="{{ route('xe.show', $xe->idxe) }}" target="_blank"
-                            class="text-dark text-decoration-none">
-                            <div class="desc-name">
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <span class="label-pos"><span class="rent">Đặt xe nhanh <svg width="16" height="16"
+                                        viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.9733 7.70015L8.46667 14.2668C8.29334 14.5268 8.01335 14.6668 7.71335 14.6668C7.62002 14.6668 7.52667 14.6535 7.43334 14.6268C7.05334 14.5068 6.79335 14.1668 6.79335 13.7735V10.0135C6.79335 9.86015 6.64667 9.72682 6.46667 9.72682L3.78001 9.6935C3.44001 9.6935 3.12668 9.50016 2.97335 9.20682C2.82668 8.92016 2.84668 8.5735 3.03335 8.30017L7.53335 1.7335C7.76001 1.40016 8.18001 1.25349 8.56668 1.37349C8.94668 1.49349 9.20668 1.83349 9.20668 2.22682V5.98683C9.20668 6.14017 9.35335 6.2735 9.53335 6.2735L12.22 6.30682C12.56 6.30682 12.8733 6.49349 13.0267 6.79349C13.1733 7.08016 13.1533 7.42682 12.9733 7.70015Z"
+                                            fill="#FFC634"></path>
+                                    </svg></span></span>
+                            <div class="fix-img">
+                                <a href="{{ route('xe.show', ['id' => $xe->idxe]) }}" class="product-thumb">
+                                    <img src="{{ $img1 }}" class="" alt="{{ $xe->tenxe }}"
+                                        style="width: 100%; height:190px ">
+                                </a>
+                            </div>
+                            <a class="rent-now">Thuê Xe</a>
+                            <!-- xem xe chi tiet -->
+                        </div>
+                        <div class="product-info">
+                            <div class="group-tag">
+                                <span class="tag-item transmission">{{ $xe->truyendong }}</span>
+                                <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                            </div>
+                            <div class="product-name">
                                 <p>{{ $xe->tenxe }}</p>
                             </div>
-                        </a>
-                        <div class="d-flex flex-row justify-content-between">
-                            <div class="card-text d-flex flex-column align-content-between">
-                                <span class="font-weight-normal">{{ $xe->dongxe->tendongxe }}
-                                </span>
-                                <span class="font-weight-normal">{{ $xe->hangxe->tenhangxe }}
-                                </span>
-
+                            <div class="group-total" style="margin-bottom: 14px;">
+                                <div class="info"><i class="ti-car" style=""></i></div>
+                                <span class="info">{{ $xe->dongxe->tendongxe }}</span>
+                                <span class="info">•</span>
+                                <span class="info">{{ $xe->hangxe->tenhangxe }}</span>
                             </div>
-                            <div class="card-text cost">Giá thuê <p class="cost"><span
-                                        class="text-primary">{{ number_format($xe->gia) }}
-                                        đồng</span></p>
+                            <div class="line-page"></div>
+                            <div class="product-price">
+                                <div class="price">
+                                    <span class="price-special">{{ number_format($xe->gia) }}K</span>/&nbsp;ngày
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
+            @endforeach
+            <div class="col-12 text-center mt-4">
+                <a href="/thuexe" class="btn btn-success">Xem thêm</a>
             </div>
-        @endforeach
-        <div class="col-12 text-center mt-4">
-            <a href="/thuexe" class="btn btn-success">Xem thêm</a>
-        </div>
+        </ul>
     </div>
     <section class="dishes" id="dishes">
 
-        <h1 class="heading">Ưu Điểm Của Mioto</h1>
+        <h1 class="heading">Ưu Điểm Của Vietcar</h1>
         <h3 class="sub-heading">
-            Những tính năng giúp bạn dễ dàng hơn khi thuê xe trên Mioto.
+            Những tính năng giúp bạn dễ dàng hơn khi thuê xe trên Vietcar.
         </h3>
         <div class="box-container">
             <div class="box">
                 <a href="#" class="fas fa-heart"></a>
                 <img src="/upload/slides/laixe.svg" alt="" />
-                <h3>Lái xe an toàn cùng Mioto</h3>
+                <h3>Lái xe an toàn cùng Vietcar</h3>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -185,7 +132,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <span>Chuyến đi trên Mioto được bảo vệ với Gói bảo hiểm thuê xe tự lái từ MIC & VNI.
+                <span>Chuyến đi trên Vietcar được bảo vệ với Gói bảo hiểm thuê xe tự lái từ MIC & VNI.
                     Khách thuê sẽ chỉ bồi thường tối đa 2,000,000VNĐ trong trường hợp có sự cố ngoài ý muốn.</span>
 
             </div>
@@ -218,7 +165,7 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <span>Chỉ cần có CCCD gắn chip (Hoặc Passport) &
-                    Giấy phép lái xe là bạn đã đủ điều kiện thuê xe trên Mioto.</span>
+                    Giấy phép lái xe là bạn đã đủ điều kiện thuê xe trên Vietcar.</span>
 
             </div>
 
@@ -377,42 +324,10 @@
                 {{ session('thongbao') }}
             @endif
 
-            <form action="{{ url('comment/' . $xe->id) }}" method="post" role="form">
+            {{-- <form action="{{ url('comment/' . $xe->id) }}" method="post" role="form">
                 @csrf
-                <div>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <div class="box1">
-                        @vinhnguyen2004 <i>3 tháng trước</i>
-                        <p>xe tốt lắm nha mọi người. Lần sau có nhu cầu mình đặt tiếp</p><br>
-                    </div>
-
-                    <div class="box1">
-                        @vinhpham2004 <i>10 tháng trước</i>
-                        <p>Tốt ngoài mong đợi</p><br>
-                    </div>
-
-                    <div class="box1">
-                        @thanhtrieuqa2004 <i>2 tuần trước</i>
-                        <p>Ngon bổ rẻ lắm nha ae. Bú bú bú</p><br>
-                    </div class="box1">
-
-                    <div class="box1">
-                        @vudixbd2004 <i>1 tháng trước</i>
-                        <p>kkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p><br>
-                    </div>
-
-                    <div class="box1">
-                        @hehehe <i>1 tháng trước</i>
-                        <p>Dume xe ngon vl ae à. Nên đặt thử 1 lần nha</p><br>
-                    </div>
-
-                    <div class="box1">
-                        @trungper08 <i>100 năm trước</i>
-                        <p>Ngon nha mấy ní. Tui có sổ hộ nghèo được thuê free nha </p><br>
-                    </div>
-
-                </div>
-            </form>
+                
+            </form> --}}
         @endif
 
 

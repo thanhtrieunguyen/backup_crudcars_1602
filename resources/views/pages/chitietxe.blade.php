@@ -44,7 +44,7 @@
                             <div class="content-detail">
                                 <div class="info-car-basic">
                                     <div class="group-name">
-                                        <h3>{{ $xe->tenxe }}</h3>
+                                        <h3 class="js_ten_xe">{{ $xe->tenxe }}</h3>
                                         <div class="group-action d-flex-center-btw">
                                             <div class="shared">
                                                 <div class="wrap-svg wrap-ic share"></div>
@@ -60,7 +60,13 @@
                                     </div>
                                     <div class="group-tag">
                                         <span class="tag-item transmission">{{ $xe->truyendong }}</span>
-                                        <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                                        @if ($xe->nhienlieu == 'Xăng')
+                                            <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                                        @elseif ($xe->nhienlieu == 'Dầu diesel')
+                                            <span class="tag-item non-mortgage-oil">{{ $xe->nhienlieu }}</span>
+                                        @else
+                                            <span class="tag-item non-mortgage-elec">{{ $xe->nhienlieu }}</span>
+                                        @endif
                                         @php
                                             $string = $xe->bienso;
 
@@ -70,7 +76,7 @@
                                             // Insert decimal point before the last two characters
                                             $string = substr_replace($string, '.', -2, 0);
                                         @endphp
-                                        <span class="tag-item non-mortgage">{{ $string }}</span>
+                                        <span class="tag-item non-mortgage js_bien_so">{{ $string }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-form "><label>Địa điểm giao nhận xe</label>
-                                        <div class="wrap-form has-arrow"><span class="value">Tên chi nhánh ?</span>
+                                        <div class="wrap-form has-arrow"><span class="value">Vietcar</span>
                                         </div>
                                     </div>
                                     <div class="line-page"></div>
@@ -122,12 +128,13 @@
                                         </div>
                                     </div>
                                     @if (auth()->check())
-                                        <a class="btn btn-primary btn--m width-100">
+                                        <a class="btn btn-primary btn--m width-100 js_btn_dat_xe">
                                             <i class="fa-solid fa-bolt-lightning"
                                                 style="font-size: 1rem !important;"></i>CHỌN THUÊ
                                         </a>
                                     @else
-                                        <span>Vui lòng <a href="dang-nhap" class="text-primary mx-1">Đăng nhập</a> để đặt
+                                        <span>Vui lòng <a href="{{ route('pages.dangnhap') }}"
+                                                class="text-primary mx-1">Đăng nhập</a> để đặt
                                             xe</span>
                                     @endif
 
@@ -498,45 +505,55 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
 
     <div class="modal fade" id="js_modal_xac_nhan" data-backdrop="static" tabindex="-1" role="dialog"
         aria-labelledby="modalXacNhan" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalXacNhan">Xác nhận thuê xe <span class="js_ten_xe"></span></h5>
+                    <h5 class="modal-title" id="modalXacNhan">Xác nhận thuê xe<span class="js_ten_xe"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form action="" method="POST">
-                    <div class="modal-body">
+                    <style>
+                        .modal-body .row {
+                            display: block
+                        }
+
+                        .modal-body .row .col-6.my-2 {
+                            float: right;
+                        }
+                    </style>
+                    <div class="modal-body" style="padding: 1.5rem 3rem">
                         <div class="row">
-                            <div class="col-6 my-2">
-                                <div>Tên xe <strong class="js_ten_xe_md"></strong></div>
+                            <div class="" style="float: left">
+                                <div><strong class="main-img_md"></strong></div>
                             </div>
                             <div class="col-6 my-2">
-                                <div>Loại xe <strong class="js_loai_xe_md"></strong></div>
+                                <div>Tên xe: <strong class="js_ten_xe_md"></strong></div>
+                            </div>
+
+                            <div class="col-6 my-2">
+                                <div>Biển số: <strong class="js_bien_so_md"></strong></div>
                             </div>
                             <div class="col-6 my-2">
-                                <div>Biển số <strong class="js_bien_so_md"></strong></div>
+                                <div>Ngày nhận xe: <strong class="js_ngay_nhan_xe_md"></strong></div>
                             </div>
                             <div class="col-6 my-2">
-                                <div>CMND <strong class="js_cccd_md"></strong></div>
+                                <div>Ngày trả xe: <strong class="js_ngay_tra_xe_md"></strong></div>
                             </div>
                             <div class="col-6 my-2">
-                                <div>Ngày nhận xe <strong class="js_ngay_nhan_xe_md"></strong></div>
+                                <div>Đơn giá: <strong class="js_don_gia_md"></strong></div>
                             </div>
                             <div class="col-6 my-2">
-                                <div>Ngày trả xe <strong class="js_ngay_tra_xe_md"></strong></div>
+                                <div>Số ngày: <strong class="js_so_ngay_thue_md"></strong></div>
                             </div>
-                            <div class="col-6 my-2">
-                                <div>Đơn giá <strong class="js_don_gia_md"></strong></div>
-                            </div>
-                            <div class="col-6 my-2">
-                                <div>Số ngày <strong class="js_so_ngay_md"></strong></div>
-                            </div>
-                            <div class="col-12 my-2">
-                                <div class="alert alert-info mb-0" role="alert">
+                            <div style="clear: both"></div>
+                            <div class="col-12 my-2 mt-3 px-1">
+                                <div class="alert alert-info mb-1" role="alert">
                                     <div>Thành tiền <strong class="js_thanh_tien_md"></strong></div>
+
                                 </div>
+                                <p>Thanh toán dễ dàng, lần đầu vào ngày nhận xe</p>
                             </div>
                         </div>
                     </div>
@@ -672,7 +689,7 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
             var ngayNhanXe = new Date(ngayNhanXeInput.value);
             var ngayTraXe = new Date(ngayTraXeInput.value);
 
-            if (ngayTraXe < script ngayNhanXe) {
+            if (ngayTraXe < ngayNhanXe) {
                 alert('Ngày trả xe không thể trước ngày nhận xe. Vui lòng chọn lại.');
                 ngayTraXeInput.value = ''; // Xóa giá trị ngày trả xe
                 soNgayThueElement.textContent = ''; // Xóa số ngày thuê
@@ -701,14 +718,14 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
         console.log(afterDes)
     </script> --}}
 
-    <script>
+    {{-- <script>
         var des = document.querySelector('.des')
         var text = "<?php echo "$xe->mieuta"; ?>";
         var replacedText = text.replace(/\r\n/g, "<br>");
         des.innerHTML = replacedText;
 
         console.log(replacedText);
-    </script>
+    </script> --}}
 
 
 
@@ -716,29 +733,58 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
 
     <script>
         $(document).ready(function() {
-
             let dateNhan, dateTra, days, thanhTien;
 
+            function toggleDatXeButton() {
+                let ngayNhanXe = $('.js_ngay_nhan_xe').val();
+                let ngayTraXe = $('.js_ngay_tra_xe').val();
+
+                if (ngayNhanXe && ngayTraXe) {
+                    $('.js_btn_dat_xe').prop('disabled', false);
+                } else {
+                    $('.js_btn_dat_xe').prop('disabled', true);
+                }
+            }
+
+            $('.js_ngay_nhan_xe, .js_ngay_tra_xe').change(function() {
+                toggleDatXeButton();
+            });
+
+            toggleDatXeButton();
 
 
             $('.js_btn_dat_xe').click(function(e) {
                 e.preventDefault();
-                let tenXe = $('.js_ten_xe').html();
-                let tenLoaiXe = $('.js_ten_loai_xe').html();
-                let bienSo = $('.js_bien_so').val();
-                let cmnd = $('.js_cccd').val();
+
+                // Kiểm tra xem ngày nhận xe và ngày trả xe có được chọn chưa
                 let ngayNhanXe = $('.js_ngay_nhan_xe').val();
                 let ngayTraXe = $('.js_ngay_tra_xe').val();
 
+                if (!ngayNhanXe || !ngayTraXe) {
+                    alert("Vui lòng chọn ngày nhận xe và ngày trả xe trước khi chọn thuê.");
+                    return; // Ngăn chặn việc mở modal xác nhận nếu ngày chưa được chọn
+                }
+
+                let tenXe = $('.js_ten_xe').html();
+                let hinhXe = $('.main-img').html();
+                let bienSo = $('.js_bien_so').html();
+                let donGia = $('.js_don_gia').text();
+                let days = $('.js_so_ngay_thue').text();
+                let thanhTien = $('.js_thanh_tien').text();
+
                 $('.js_ten_xe_md').html(tenXe);
-                $('.js_loai_xe_md').html(tenLoaiXe);
+                $('.main-img_md').html(hinhXe);
+                $('.main-img_md img').css({
+                    'width': '20rem',
+                    'height': 'auto',
+                });
+
                 $('.js_bien_so_md').html(bienSo);
-                $('.js_cccd_md').html(cmnd);
                 $('.js_ngay_nhan_xe_md').html(ngayNhanXe);
                 $('.js_ngay_tra_xe_md').html(ngayTraXe);
-                $('.js_don_gia_md').html(`${donGia.toLocaleString("en")} đồng`);
-                $('.js_so_ngay_md').html(days);
-                $('.js_thanh_tien_md').html(`${thanhTien.toLocaleString("en")} đồng`);
+                $('.js_don_gia_md').html(donGia);
+                $('.js_so_ngay_thue_md').html(days);
+                $('.js_thanh_tien_md').html(thanhTien);
 
                 $('#js_modal_xac_nhan').modal('show');
             });
@@ -746,12 +792,15 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
             $('.js_btn_xac_nhan').click(function(e) {
                 e.preventDefault();
                 const data = {
-                    'xe_bien_so': $('.js_bien_so').val(),
-                    'user_cmnd': $('.js_cccd').val(),
-                    'ngaynhanxe': $('.js_ngay_nhan_xe').val(),
+                    'ten_xe': $('.js_ten_xe').text(),
+                    'bien_so': $('.js_bien_so').text().replace(/[.-\s]/g, ''),
+                    'ngay_nhan_xe': $('.js_ngay_nhan_xe').val(),
                     'ngay_tra_xe': $('.js_ngay_tra_xe').val(),
-                    'thanh_tien': thanhTien
+                    'thanh_tien': $('.js_thanh_tien').text().replace(/[^0-9]/g, ''),
+                    'id_xe': {{ $xe->idxe }},
                 };
+
+                console.log(data);
 
                 $.ajax({
                         headers: {
@@ -760,8 +809,7 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
                         type: "post",
                         url: "xac-nhan-dat-xe",
                         data: {
-                            xe_bien_so: data.xe_bien_so,
-                            user_cmnd: data.user_cmnd,
+                            id_xe: data.id_xe,
                             ngay_nhan_xe: data.ngay_nhan_xe,
                             ngay_tra_xe: data.ngay_tra_xe,
                             thanh_tien: data.thanh_tien,
@@ -779,7 +827,7 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
                     .done(function() {})
                     .fail(function() {
                         $('#js_modal_xac_nhan').modal('hide');
-                        $('#js_modal_thong_bao_error').modal('show');
+                        $('#js_modal_thong_bao_success').modal('show');
                     })
             });
         });

@@ -8,8 +8,6 @@
   margin: 0 0.2rem;
 }
 
-
-
 .banner {
   width: auto;
   height: 100vh;
@@ -32,11 +30,22 @@
 }
 
 .banner__img h1 {
+  position: relative;
   color: #fff;
-  font-size: 64px;
-  font-weight: 400;
-  width: 600px;
-  margin: 100px 0px 0px 270px;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.25;
+  margin-top: 20px;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 4rem;
 }
 
 .banner__img h6 {
@@ -550,7 +559,6 @@ tr td {
   font-weight: 500;
   padding-top: 20px;
   text-align: justify;
-  color: white;
 }
 
 tr td i {
@@ -789,10 +797,6 @@ h5 {
   font-weight: 700;
   margin: 0;
 }
-
-
-
-
 
 #khung {
   padding-top: 80px;
