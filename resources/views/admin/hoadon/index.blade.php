@@ -45,7 +45,12 @@
                                     <td>{{ date('d/m/Y', strtotime($hoaDon->ngaynhanxe)) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($hoaDon->ngaytraxe)) }}</td>
                                     <td>{{ number_format($hoaDon->tongtien) }} đồng</td>
-                                    <td>{{ date('d/m/Y', strtotime($hoaDon->ngaythanhtoan)) }} </td>
+                                    {{-- @php
+
+                                        dd(date('d/m/Y', strtotime($hoaDon->ngaythanhtoan)) == '01/01/1970');
+                                    @endphp --}}
+                                    <td>{{ date('d/m/Y', strtotime($hoaDon->ngaythanhtoan)) == '01/01/1970' ? '01/01/1970' : date('d/m/Y', strtotime($hoaDon->ngaythanhtoan)) }}
+                                    </td>
                                     <td>{{ $hoaDon->tinhtranghoadon == 0 ? 'Chưa thanh toán' : 'Đã thanh toán' }}</td>
                                     <td>
                                         <div class="custom-control custom-checkbox">

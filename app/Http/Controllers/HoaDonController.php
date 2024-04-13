@@ -16,7 +16,6 @@ class HoaDonController extends Controller
     public function index()
     {
         $hoaDons = HoaDon::with('giaodich', 'user', 'xe')->orderBy('tinhtranghoadon', 'asc')->latest()->get();
-
         return view('admin.hoadon.index', compact('hoaDons'));
     }
 
@@ -53,11 +52,20 @@ class HoaDonController extends Controller
     {
         try {
             $hoaDon = HoaDon::where('idhoadon', $request->idhoadon)->firstOrFail();
-            $hoaDon->update(['tinhtranghoadon' => $request->tinhtranghoadon]);
+            if ($hoaDon->tinhtranghoadon == 1) {
 
-            return response()->json([
-                'error' => false
-            ]);
+                return back()->with(['thong-bao' => 'Không thể bỏ duyệt hoá đơn khi đã thanh toán!', 'type' => 'danger']);
+            } else {
+                $hoaDon->update([
+                    'tinhtranghoadon' => $request->tinhtranghoadon,
+                    'ngaythanhtoan' => now()
+                ]);
+
+                return response()->json([
+                    'error' => false
+                ]);
+            }
+
         } catch (Exception $e) {
             return response()->json([
                 'error' => true,
