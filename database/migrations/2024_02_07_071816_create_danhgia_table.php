@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->Integer('iduser')->unsigned()->nullable();
             $table->Integer('idxe')->unsigned()->nullable();
             $table->text('mota')->nullable();
-            $table->foreign('iduser')->references('iduser')->on('users')->onDelete('cascade');
-            $table->foreign('idxe')->references('idxe')->on('xe')->onDelete('cascade');
+            $table->foreign('iduser')->references('iduser')->on('users')->onDelete('restrict');
+            $table->foreign('idxe')->references('idxe')->on('xe')->onDelete('restrict');
             $table->timestamp('created_at')->default(now());
             $table->timestamp('updated_at')->default(now())->useCurrentOnUpdate();
         });

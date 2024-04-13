@@ -25,6 +25,9 @@
                                 <th scope="col">Tên xe</th>
                                 <th scope="col">Biển số</th>
                                 <th scope="col">Giá thuê</th>
+                                <th scope="col">Truyền động</th>
+                                <th scope="col">Nhiên liệu</th>
+                                <th scope="col">Tiêu hao</th>
                                 <th scope="col">Dòng xe</th>
                                 <th scope="col">Hãng xe</th>
                                 <th scope="col" class="text-center">Tùy chọn</th>
@@ -62,6 +65,9 @@
                                     </td>
                                     <td>{{ $xe->bienso }}</td>
                                     <td>{{ number_format($xe->gia) }} đồng</td>
+                                    <td>{{ $xe->truyendong }}</td>
+                                    <td>{{ $xe->nhienlieu }}</td>
+                                    <td>{{ $xe->nhienlieutieuhao_km }} Km/Lít</td>
                                     <td>{{ $xe->dongXe->tendongxe }}</td>
                                     <td>{{ $xe->hangXe->tenhangxe }}</td>
                                     <td class="text-center" style="display: flex">

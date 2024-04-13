@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="m-container" style="margin-top: 120px;">
+    <div class="m-container" style="margin-top: 100px;">
 
         <div class=" wrapper">
             <ul class="product">
@@ -93,7 +93,13 @@
                             <div class="product-info">
                                 <div class="group-tag">
                                     <span class="tag-item transmission">{{ $xe->truyendong }}</span>
-                                    <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                                    @if ($xe->nhienlieu == 'Xăng')
+                                        <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                                    @elseif ($xe->nhienlieu == 'Dầu diesel')
+                                        <span class="tag-item non-mortgage-oil">{{ $xe->nhienlieu }}</span>
+                                    @else
+                                        <span class="tag-item non-mortgage-elec">{{ $xe->nhienlieu }}</span>
+                                    @endif
                                 </div>
                                 <div class="product-name">
                                     <p>{{ $xe->tenxe }}</p>

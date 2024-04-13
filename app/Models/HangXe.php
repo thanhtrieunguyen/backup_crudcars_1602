@@ -9,6 +9,7 @@ class HangXe extends Model
 {
     protected $table = 'hangxe';
     protected $primaryKey = 'idhangxe';
+    protected $guarded = [];
     public function xe()
     {
         return $this->hasMany('App\Models\Xe', 'idhangxe', 'idhangxe');

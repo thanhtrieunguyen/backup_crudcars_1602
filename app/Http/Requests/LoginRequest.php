@@ -24,8 +24,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'min:3|max:255',
             'password' => 'min:6|max:255',
-        ]
-        ;
+        ];
     }
 
     public function messages() {

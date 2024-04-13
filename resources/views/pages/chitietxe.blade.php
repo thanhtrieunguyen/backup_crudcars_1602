@@ -60,7 +60,13 @@
                                     </div>
                                     <div class="group-tag">
                                         <span class="tag-item transmission">{{ $xe->truyendong }}</span>
-                                        <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                                        @if ($xe->nhienlieu == 'Xăng')
+                                            <span class="tag-item non-mortgage">{{ $xe->nhienlieu }}</span>
+                                        @elseif ($xe->nhienlieu == 'Dầu diesel')
+                                            <span class="tag-item non-mortgage-oil">{{ $xe->nhienlieu }}</span>
+                                        @else
+                                            <span class="tag-item non-mortgage-elec">{{ $xe->nhienlieu }}</span>
+                                        @endif
                                         @php
                                             $string = $xe->bienso;
 
