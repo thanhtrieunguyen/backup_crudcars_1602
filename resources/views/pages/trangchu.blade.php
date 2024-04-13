@@ -1,5 +1,8 @@
 @extends('layouts.index')
 
+<head>
+    <link rel="icon" type="image/x-icon" href="upload/slides/car.png">
+</head>
 @section('content')
     <link rel="stylesheet" href="css/style.css">
 
@@ -121,7 +124,7 @@
             <h4 class="text-center text-uppercase lead display-4">Xe tốt nhất</h4>
         </div>
         @foreach ($xes as $xe)
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-4">
                 @php
                     $array = json_decode($xe->hinhxe->hinhxe);
                     $img1 = null;
@@ -137,7 +140,7 @@
                 <div class="card shadow rounded-lg border-0 overflow-hidden">
                     <a href="{{ route('xe.show', ['id' => $xe->idxe]) }}" target="_blank" class="fix-img">
                         <img src="{{ $img1 }}" class="" alt="{{ $xe->tenxe }}"
-                            style="width: 100%; height:250px ">
+                            style="width: 100%; height:190px ">
                     </a>
                     <div class="card-body desc-car">
                         <a href="{{ route('xe.show', $xe->idxe) }}" target="_blank"

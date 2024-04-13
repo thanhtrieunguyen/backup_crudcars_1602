@@ -127,7 +127,8 @@
                                                 style="font-size: 1rem !important;"></i>CHỌN THUÊ
                                         </a>
                                     @else
-                                        <span>Vui lòng <a href="dang-nhap" class="text-primary mx-1">Đăng nhập</a> để đặt
+                                        <span>Vui lòng <a href="{{ route('pages.dangnhap') }}"
+                                                class="text-primary mx-1">Đăng nhập</a> để đặt
                                             xe</span>
                                     @endif
 
@@ -672,7 +673,7 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
             var ngayNhanXe = new Date(ngayNhanXeInput.value);
             var ngayTraXe = new Date(ngayTraXeInput.value);
 
-            if (ngayTraXe < script ngayNhanXe) {
+            if (ngayTraXe < ngayNhanXe) {
                 alert('Ngày trả xe không thể trước ngày nhận xe. Vui lòng chọn lại.');
                 ngayTraXeInput.value = ''; // Xóa giá trị ngày trả xe
                 soNgayThueElement.textContent = ''; // Xóa số ngày thuê
@@ -701,20 +702,20 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
         console.log(afterDes)
     </script> --}}
 
-    <script>
+    {{-- <script>
         var des = document.querySelector('.des')
         var text = "<?php echo "$xe->mieuta"; ?>";
         var replacedText = text.replace(/\r\n/g, "<br>");
         des.innerHTML = replacedText;
 
         console.log(replacedText);
-    </script>
+    </script> --}}
 
 
 
 
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
 
             let dateNhan, dateTra, days, thanhTien;
@@ -783,5 +784,5 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
                     })
             });
         });
-    </script>
+    </script> --}}
 @endpush

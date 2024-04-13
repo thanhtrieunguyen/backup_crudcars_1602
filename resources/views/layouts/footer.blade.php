@@ -113,10 +113,10 @@
         </a>
         <p>Phương thức thanh toán</p>
         <div class="socials" >
-                <img width="40px" src="./upload/xes/momo.png" alt="">
-                <img width="40px" src="./upload/xes/vnpay.png" alt="">
-                <img width="40px" src="./upload/xes/visa.png" alt="">
-                <img width="40px" src="./upload/xes/zalopay.png" alt="">
+                <img width="40px" src="./upload/images/momo.png" alt="">
+                <img width="40px" src="./upload/images/vnpay.png" alt="">
+                <img width="40px" src="./upload/images/visa.png" alt="">
+                <img width="40px" src="./upload/images/zalopay.png" alt="">
             </div>
     </p>
     <script src=" script.js"></script>

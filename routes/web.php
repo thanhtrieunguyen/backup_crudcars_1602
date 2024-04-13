@@ -29,6 +29,8 @@ Route::post('dangky', [AuthController::class, 'postDangKy'])->name('auth.dangky'
 
 Route::post('dangxuat', [AuthController::class, 'postDangXuat'])->name('auth.dangxuat');
 
+Route::get('thuexe', [PageController::class , 'getThueXe'])->name('pages.thuexe');
+
 Route::get('chitietxe/{id}', [XeController::class, 'show'])->name('xe.show');
 
 Route::get('about', [PageController::class, 'getAbout'])->name('pages.about');
