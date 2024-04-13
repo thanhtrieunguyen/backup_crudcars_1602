@@ -40,7 +40,6 @@
 </head>
 
 <body class="" id="page-top" data-spy="scroll" data-offset="50">
-
     @include('layouts.header')
     <div class="container py-4" style="min-height: calc(100vh - 166px); margin-top: 56px">
         @yield('content')

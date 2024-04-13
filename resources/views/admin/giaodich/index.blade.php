@@ -93,21 +93,24 @@
                 let giaoDichId = $(this).attr('giaodich-id')
                 let tinhTrang;
                 (checked) ? tinhTrang = 1: tinhTrang = 0;
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "post",
-                    url: "admin/update-tinh-trang-giao-dich",
-                    data: {
-                        idgiaodich: giaoDichId,
-                        tinhtranggiaodich: tinhTrang
-                    },
-                    success: function(response) {
-                        console.log(response);
-                    }
-                });
+                if (confirm('Bạn có chắc chắn muốn thay đổi trạng thái của giao dịch không?')) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: "admin/update-tinh-trang-giao-dich",
+                        data: {
+                            idgiaodich: giaoDichId,
+                            tinhtranggiaodich: tinhTrang
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        }
+                    });
+                } else {
+                    // 
+                }
             });
 
             $('body').on('click', '.js_btn_xoa_giao_dich', function(e) {

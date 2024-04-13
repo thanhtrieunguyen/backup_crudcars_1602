@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-form "><label>Địa điểm giao nhận xe</label>
-                                        <div class="wrap-form has-arrow"><span class="value">Tên chi nhánh ?</span>
+                                        <div class="wrap-form has-arrow"><span class="value">Vietcar</span>
                                         </div>
                                     </div>
                                     <div class="line-page"></div>
@@ -792,11 +792,15 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
             $('.js_btn_xac_nhan').click(function(e) {
                 e.preventDefault();
                 const data = {
-                    'bien_so': $('.js_bien_so').val(),
+                    'ten_xe': $('.js_ten_xe').text(),
+                    'bien_so': $('.js_bien_so').text().replace(/[.-\s]/g, ''),
                     'ngay_nhan_xe': $('.js_ngay_nhan_xe').val(),
                     'ngay_tra_xe': $('.js_ngay_tra_xe').val(),
-                    'thanh_tien': $('.js_ngay_tra_xe').val(),
+                    'thanh_tien': $('.js_thanh_tien').text().replace(/[^0-9]/g, ''),
+                    'id_xe': {{ $xe->idxe }},
                 };
+
+                console.log(data);
 
                 $.ajax({
                         headers: {
@@ -805,7 +809,7 @@ Trân trọng cảm ơn, chúc quý khách hàng có những chuyến đi tuyệ
                         type: "post",
                         url: "xac-nhan-dat-xe",
                         data: {
-                            bien_so: data.bien_so,
+                            id_xe: data.id_xe,
                             ngay_nhan_xe: data.ngay_nhan_xe,
                             ngay_tra_xe: data.ngay_tra_xe,
                             thanh_tien: data.thanh_tien,

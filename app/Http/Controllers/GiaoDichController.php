@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GiaoDichCreateRequest;
 use App\Models\GiaoDich;
 use App\Models\HoaDon;
 use App\Models\User;
@@ -10,12 +11,15 @@ use Illuminate\Http\Request;
 use Exception;
 use DateTime;
 use Illuminate\Database\QueryException;
+use Mail;
+use App\Mail\DuyetGiaoDich;
+use Auth;
 
 class GiaoDichController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        // 
     }
 
     public function index()
@@ -30,11 +34,8 @@ class GiaoDichController extends Controller
         return view('admin.giaodich.create');
     }
 
-    public function store(Request $request)
+    public function store(GiaoDichCreateRequest $request)
     {
-        $request->validate([
-            //
-        ]);
         $idUser = User::select('iduser')->where('cccd', '=', $request->cccd)->first()->iduser;
         $idXe = Xe::select('idxe')->where('bienso', '=', $request->bienso)->first()->idxe;
 
@@ -47,6 +48,9 @@ class GiaoDichController extends Controller
             'ngaytraxe' => $request->get('ngaytraxe'),
         ]);
 
+        $xe = Xe::where('idxe', $giaodich->idxe)->first();
+        $xe->tinhtrang = 1;
+        $xe->save();
         $giaodich->save();
 
         return redirect()->route('giaodich.index')->with('success', 'Giao dịch đã được thêm thành công.');
@@ -127,6 +131,9 @@ class GiaoDichController extends Controller
     {
         try {
             $giaoDich = GiaoDich::where('idgiaodich', $id)->firstOrFail();
+            $xe = Xe::where('idxe', $giaoDich->idxe)->firstOrFail();
+            $xe->tinhtrang = 0;
+            $xe->save();
             $giaoDich->delete();
             return back()->with(['thong-bao' => 'Xóa thành công giao dịch!', 'type' => 'success']);
         } catch (QueryException $e) {
@@ -164,6 +171,40 @@ class GiaoDichController extends Controller
 
 
             $giaoDich->update(['tinhtranggiaodich' => $request->tinhtranggiaodich]);
+
+            if ($request->tinhtranggiaodich == 1) {
+                $giaoDich = GiaoDich::findOrFail($request->idgiaodich);
+                Mail::to($giaoDich->user->email)->send(new DuyetGiaoDich($giaoDich));
+            }
+
+            return response()->json([
+                'status' => 'OK',
+                'message' => 'Tình trạng GD đã được cập nhật'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+
+    public function ajaxDatXe(Request $request)
+    {
+        $user = Auth::user(); // Lấy thông tin người dùng đã đăng nhập
+        $userId = $user->iduser;
+        try {
+            GiaoDich::create([
+                'ngaynhanxe' => $request->ngay_nhan_xe,
+                'ngaytraxe' => $request->ngay_tra_xe,
+                'tinhtranggiaodich' => 0,
+                'phidv' => 2000,
+                'tongtien' => $request->thanh_tien,
+                'iduser' => $userId,
+                'idxe' => $request->id_xe,
+            ]);
+
 
             return response()->json([
                 'error' => false
