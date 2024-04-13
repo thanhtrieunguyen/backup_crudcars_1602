@@ -1,4 +1,5 @@
 @extends('layouts.index')
+
 <head>
     <title>
         About US

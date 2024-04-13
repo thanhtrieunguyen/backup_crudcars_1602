@@ -1,4 +1,11 @@
 @extends('layouts.index')
+
+<head>
+    <title>
+        Contact
+    </title>
+    <link rel="icon" type="image/x-icon" href="icons/contact.png">
+</head>
 @section('content')
     <section id="contact"><br><br>
         <h1>Liên hệ với chúng tôi</h1>
