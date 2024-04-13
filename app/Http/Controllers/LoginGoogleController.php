@@ -85,6 +85,9 @@ class LoginGoogleController extends Controller
                 return redirect()->intended('/')->with('success', 'Đăng nhập thành công.');
 
             } else {
+                if($finduser->google_id == null) {
+                    $finduser->google_id = $user->id;
+                }
                 $today = Carbon::now()->toDateString();
                 $newUser = User::updateOrCreate(
                     [
@@ -96,7 +99,7 @@ class LoginGoogleController extends Controller
                         'idrole' => 2,
                         'sdt' => "",
                         'ngaysinh' => '1900-01-01',
-                        'diachi' => null,
+                        'diachi' => "",
                         'cccd' => "",
                     ]
                 );

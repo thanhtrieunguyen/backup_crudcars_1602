@@ -8,8 +8,6 @@ use Validator;
 use Illuminate\Support\Str;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-// IMAGE==========
-// ===============
 use Illuminate\Http\Request;
 use App\Models\Xe;
 use App\Models\DongXe;
@@ -22,7 +20,7 @@ class XeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin')->except('show', 'filter');
 
         function convertToEscapedNewlines($text)
         {
@@ -217,10 +215,34 @@ class XeController extends Controller
         $bienso = $request->input('bienso');
         $xe = Xe::where('bienso', $bienso)->first();
         if ($xe) {
-            return response()->json( $xe->gia);
+            return response()->json($xe->gia);
         } else {
             return response()->json(['error' => 'Không tìm thấy xe với tên đã chọn']);
         }
+    }
+
+    public function filter(Request $request)
+    {
+        $dongXeId = $request->query('dongxe');
+        $hangXeId = $request->query('hangxe');
+
+        $dongXes = DongXe::select('iddongxe', 'tendongxe')->get();
+        $hangXes = HangXe::select('idhangxe', 'tenhangxe')->get();
+        
+        $xes = Xe::query();
+
+        if ($dongXeId != "None") {
+            $xes->where('iddongxe', $dongXeId);
+        }
+
+        if ($hangXeId != "None") {
+            $xes->where('idhangxe', $hangXeId);
+        }
+
+        $xes = $xes->paginate(10);
+
+        // Trả về view với danh sách xe đã lọc
+        return view('pages.thuexe', compact('xes', 'dongXes', 'hangXes'));
     }
 
 

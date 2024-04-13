@@ -9,56 +9,54 @@
     <div class="filter-section fixed">
         <div class="m-container">
             <div class="filter-container">
-                <div class="filter-dropdown">
-                    <div class="list-dropdown">
-                        <div class="item-dropdown reset-item" style="margin-left: 20px;">
-                            <div class="item-dropdown__wrap">
-                                <div class="wrap-svg"><i class="ti-back-left"></i></div>
-                            </div>
-                        </div>
-                        <div
-                            class="swiper swiper-list-filter swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide swiper-slide-active" style="margin-right: 10px;">
-                                    <div class="item-dropdown ">
-                                        <div class="item-dropdown__wrap">
-                                            <div class="wrap-svg"><i class="ti-car"></i></div>
-                                            <select>
-                                                <option selected value="None"> Dòng xe</option>
-                                                @foreach ($dongXes as $dongXe)
-                                                    <option value="{{ $dongXe->iddongxe }}">{{ $dongXe->tendongxe }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                <form action="{{ route('filter') }}" method="GET">
+                    <div class="filter-dropdown">
+                        <div class="list-dropdown">
+                            <div
+                                class="swiper swiper-list-filter swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide swiper-slide-active" style="margin-right: 10px;">
+                                        <div class="item-dropdown">
+                                            <div class="item-dropdown__wrap">
+                                                <div class="wrap-svg"><i class="ti-car"></i></div>
+                                                <select id="brandSelect" name="dongxe">
+                                                    <option selected value="None"> Dòng xe</option>
+                                                    @foreach ($dongXes as $dongXe)
+                                                        <option value="{{ $dongXe->iddongxe }}">{{ $dongXe->tendongxe }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide swiper-slide-next" style="margin-right: 10px;">
-                                    <div class="item-dropdown ">
-                                        <div class="item-dropdown__wrap">
-                                            <div class="wrap-svg"><i class="ti-world"></i></div>
-                                            <select>
-                                                <option selected value="None"> Hãng xe</option>
-                                                @foreach ($hangXes as $hangXe)
-                                                    <option value="{{ $hangXe->idhangxe }}">{{ $hangXe->tenhangxe }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                    <div class="swiper-slide swiper-slide-next" style="margin-right: 10px;">
+                                        <div class="item-dropdown">
+                                            <div class="item-dropdown__wrap">
+                                                <div class="wrap-svg"><i class="ti-world"></i></div>
+                                                <select id="typeSelect" name="hangxe">
+                                                    <option selected value="None"> Hãng xe</option>
+                                                    @foreach ($hangXes as $hangXe)
+                                                        <option value="{{ $hangXe->idhangxe }}">{{ $hangXe->tenhangxe }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><a class="btn" style="background-color: rgb(255, 255, 255);">
-                        <div class="wrap-svg"><i class="ti-filter"></i></div>Bộ lọc
-                    </a>
-                </div>
+                        <button type="submit" class="btn" style="background-color: rgb(255, 255, 255);">
+                            <div class="wrap-svg"><i class="ti-filter"></i></div>Bộ lọc
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="m-container" style="margin-top: 100px;">
 
-        <div class=" wrapper">
+        <div class="wrapper">
             <ul class="product">
                 @foreach ($xes as $xe)
                     @php

@@ -23,16 +23,18 @@
                                 <th scope="col">STT</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Họ tên</th>
-                                <th scope="col">CMND</th>
+                                <th scope="col">CCCD</th>
                                 <th scope="col">Ngày sinh</th>
                                 <th scope="col">Số điện thoại</th>
                                 <th scope="col" style="width: 14rem">Địa chỉ</th>
+                                <th scope="col">Số giao dịch</th>
                                 <th scope="col" class="text-center">Tùy chọn</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
                                 $dem = 0;
+                                $sogiaodich = 0;
                             @endphp
                             @forelse ($khachHangs as $khachHang)
                                 <tr>
@@ -43,6 +45,7 @@
                                     <td>{{ date('d/m/Y', strtotime($khachHang->ngaysinh)) }}</td>
                                     <td>{{ $khachHang->sdt }}</td>
                                     <td>{{ $khachHang->diachi }}</td>
+                                    <td>{{ $khachHang->giaodich_count }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('user.edit', $khachHang->iduser) }}" class="text-primary mr-3"><i
                                                 class="fa fa-edit"></i>Cập
