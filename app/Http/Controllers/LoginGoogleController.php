@@ -77,17 +77,15 @@ class LoginGoogleController extends Controller
     {
         try {
             $user = Socialite::driver('google')->user();
-            $finduser = User::where('google_id', $user->id)->first();
+            $finduser = User::where('email', $user->email)->first();
             if ($finduser) {
-
+            $finduser->google_id = $user->id;
+            $finduser->save();
                 Auth::login($finduser);
 
                 return redirect()->intended('/')->with('success', 'Đăng nhập thành công.');
 
             } else {
-                if($finduser->google_id == null) {
-                    $finduser->google_id = $user->id;
-                }
                 $today = Carbon::now()->toDateString();
                 $newUser = User::updateOrCreate(
                     [
