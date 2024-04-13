@@ -26,14 +26,20 @@ class Xe extends Model
         return $this->belongsTo('App\Models\HinhXe', 'idhinhxe', 'idhinhxe');
     }
 
+    public function giaodich()
+    {
+        return $this->hasMany('App\Models\GiaoDich', 'idxe', 'idxe');
+    }
+
     public function hoadon()
     {
-        return $this->belongsToMany('App\Models\HoaDon', 'xe_hoadon', 'idxe', 'idhoadon');
+        return $this->hasMany('App\Models\HoaDon', 'idxe', 'idxe');
     }
+
 
     public function danhgia()
     {
-        return $this->hasMany('App\Models\Comment', 'iddanhgia', 'iddanhgia');
+        return $this->hasMany('App\Models\Comment', 'idxe', 'idxe');
     }
 
 }

@@ -10,15 +10,16 @@ class HoaDon extends Model
     protected $table = 'hoadon';
     protected $primaryKey = 'idhoadon';
     protected $guarded = [];
-    public function chitiethoadon()
+    public function giaodich()
     {
-        return $this->hasOne('App\Models\ChiTietHoaDon', 'idchitiethoadon', 'idchitiethoadon');
+        return $this->belongsTo('App\Models\GiaoDich', 'idgiaodich', 'idgiaodich');
     }
 
     public function xe()
     {
-        return $this->belongsToMany('App\Models\Xe', 'xe_hoadon', 'idxe', 'idhoadon');
+        return $this->belongsTo('App\Models\Xe', 'idxe', 'idxe');
     }
+
 
     public function user()
     {
