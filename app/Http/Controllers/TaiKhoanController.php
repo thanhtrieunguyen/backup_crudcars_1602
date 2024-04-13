@@ -9,6 +9,8 @@ use Illuminate\Http\JsonResponse;
 use Validator;
 use Hash;
 use App\Models\User;
+use App\Models\GiaoDich;
+use Illuminate\Database\QueryException;
 
 class TaiKhoanController extends Controller
 {
@@ -19,8 +21,9 @@ class TaiKhoanController extends Controller
 
     public function index()
     {
-        $khachHangs = User::where('idrole', 2)->with('role')->latest()->get();
+        $khachHangs = User::with('giaodich')->where('idrole', 2)->with('role')->latest()->withCount('giaodich')->get();
         return view('admin.khachhang.index', compact('khachHangs'));
+
     }
 
     public function create()
@@ -80,10 +83,14 @@ class TaiKhoanController extends Controller
 
     public function destroy($id)
     {
-        $khachHang = User::findOrFail($id);
-        $khachHang->delete();
-
-        return back()->with(['thong-bao' => 'Xóa khách hàng ' . $khachHang->hoten . ' thành công!', 'type' => 'success']);
+        try {
+            $khachHang = User::findOrFail($id);
+            $khachHang->delete();
+            
+            return back()->with(['thong-bao' => 'Xóa khách hàng ' . $khachHang->hoten . ' thành công!', 'type' => 'success']);
+        } catch (QueryException $e) {
+            return back()->with(['thong-bao' => 'Không thể xóa khách hàng này do khách hàng này đã có giao dịch trong hệ thống. Để xoá, yêu cầu xoá các giao dịch liên quan đến khách hàng sau đó mới có thể xoá khách hàng.', 'type' => 'danger']);
+        }
     }
 
     public function getCCCD(Request $request): JsonResponse

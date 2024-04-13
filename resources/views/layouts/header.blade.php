@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <form action="{{ route('pages.timkiem') }}" class="form-inline my- my-lg-0">
                 <input class="form-control mr-sm-2" style="width: 200px;" type="search" placeholder="Tìm kiếm xe..."
-                    aria-label="Search" name="q">
+                    aria-label="Search" name="q" id="search" value="{{ old('search') }}">
                 <button class="btn btn-success my-2 my-sm-0" style="width: 100px;" type="submit">Tìm kiếm</button>
             </form>
             <ul class="navbar-nav ml-auto">

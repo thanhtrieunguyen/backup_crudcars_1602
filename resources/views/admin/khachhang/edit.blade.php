@@ -66,7 +66,7 @@
                                 <label for="ngaySinh"><strong style="font-weight: 600">Ngày sinh
                                         (mm/dd/yyyy)</strong><strong style="font-weight: 600" class="important"
                                         aria-label="Required">(*)</strong></label>
-                                <input type="date" class="form-control js_my_date_picker" id="ngaySinh" name="ngaysinh"
+                                <input type="date" class="form-control" id="ngaySinh" name="ngaysinh"
                                     placeholder="Chọn ngày sinh" required value="{{ $khachHang->ngaysinh }}">
                             </div>
                             <div class="col-md-6">

@@ -61,9 +61,9 @@
                             @forelse ($giaoDichTodays as $giaoDichToday)
                                 <tr>
                                     <th scope="row">{{ ++$i }}</th>
-                                    <td>{{ $giaoDichToday->hoadon->xe->tenxe }}</td>
-                                    <td>{{ $giaoDichToday->hoadon->xe->bienso }}</td>
-                                    <td>{{ $giaoDichToday->hoadon->user->hoten }}</td>
+                                    <td>{{ $giaoDichToday->xe->tenxe }}</td>
+                                    <td>{{ $giaoDichToday->xe->bienso }}</td>
+                                    <td>{{ $giaoDichToday->user->hoten }}</td>
                                     <td>{{ number_format($giaoDichToday->tongtien) }} đồng</td>
                                 </tr>
                             @empty

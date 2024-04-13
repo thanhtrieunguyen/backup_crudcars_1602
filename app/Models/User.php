@@ -19,6 +19,18 @@ class User extends Authenticatable
         'password'
     ];
 
+    protected $fillable = [
+        'idrole',
+        'google_id',
+        'password',
+        'email',
+        'sdt',
+        'diachi',
+        'ngaysinh',
+        'cccd',
+        'hoten',
+    ];
+
     public function role()
     {
         return $this->belongsTo('App\Models\Role', 'idrole', 'idrole');

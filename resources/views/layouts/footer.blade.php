@@ -112,7 +112,7 @@
         Hotline: 1900 3333 <br>
         Mr.Group 6
         <a href="#" class="logo-gorvement">
-            <img width="100px" src="http://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoCCDV.png" alt="">
+            <img width="100px" src="./upload/slides/logobocongthuong.png" alt="">
         </a>
     <p>Phương thức thanh toán</p>
     <div class="socials">
@@ -124,7 +124,7 @@
     </p>
     {{-- <script src=" script.js"></script> --}}
 </footer>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 {{-- <script src="js/carouseller.js"></script>
 <script src="js/jquery.easing.1.3.js"></script> --}}
 {{-- <script type="text/javascript" src="libs/fancybox/jquery.fancybox.min.js"></script> --}}
@@ -139,7 +139,7 @@
     }
 </script>
 
-<script>
+{{-- <script>
     $(".quick-buy-form").submit(function(event) {
         event.preventDefault();
         $.ajax({
@@ -157,10 +157,14 @@
             }
         });
     });
-</script>
+</script> --}}
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+    integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
 <script>
     var offset = 400;
     var duration = 750;
@@ -181,11 +185,11 @@
 <div title="Về đầu trang" id="top-up">
     <i class="fas fa-arrow-circle-up"></i>
 </div>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(function() {
         $('#product-slide').carouseller();
     });
-</script>
+</script> --}}
 
 </body>
 

@@ -26,6 +26,10 @@ class PageAdminController extends Controller
             ->select(DB::raw('SUM(tongtien) as total_money'))
             ->get();
 
+        if ($totalMoney[0]->total_money == null) {
+            $totalMoney[0]->total_money = 0;
+        }
+
         $topXes = DB::table('xe')
             ->join('giaodich', 'giaodich.idxe', '=', 'xe.idxe')
             ->select('xe.idxe', 'xe.tenxe', DB::raw('COUNT(*) as times'))
@@ -46,8 +50,6 @@ class PageAdminController extends Controller
             ->whereBetween('created_at', [$startOfDay, $endOfDay])
             ->latest()
             ->get();
-
-
 
         return view('admin.thongke', compact('totalKhachHang', 'totalXe', 'totalMoney', 'topXes', 'giaoDichTodays'));
     }
