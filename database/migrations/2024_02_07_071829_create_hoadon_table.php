@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('iduser')->references('iduser')->on('users')->onDelete('restrict');
             $table->Integer('idxe')->unsigned();
             $table->foreign('idxe')->references('idxe')->on('xe')->onDelete('restrict');
-            $table->timestamp('created_at')->default(now());
+            $table->timestamp('created_at');
             $table->timestamp('updated_at')->default(now())->useCurrentOnUpdate();
         });
     }

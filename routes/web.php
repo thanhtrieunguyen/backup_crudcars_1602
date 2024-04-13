@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\XeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::get('timkiem', [PageController::class, 'timKiem'])->name('pages.timkiem')
 Route::get('about', [PageController::class, 'getAbout'])->name('pages.about');
 Route::get('contact', [PageController::class, 'getContact'])->name('pages.contact');
 
+Route::get('blog', [PageController::class, 'getBlog'])->name('pages.blog');
+
+Route::get('dulich', [PageController::class, 'getDulich'])->name('pages.dulich');
+
 Route::post('comment/{id}', [CommentController::class, 'postComment'])->name('comments');
 // ADMIN ROUTE
 // Route::group(['prefix' => 'admin'], function () {
@@ -53,7 +58,10 @@ Route::post('comment/{id}', [CommentController::class, 'postComment'])->name('co
 //     Route::delete('/xe/destroy/{id}', [XeController::class, 'destroy'])->name('xe.destroy');
 // });
 
+
+
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/thongke', [PageAdminController::class, 'getThongKe'])->name('admin.thongke');
     Route::resource('/xe', XeController::class)->except(['show']);
     Route::resource('/user', TaiKhoanController::class);
     Route::resource('/dongxe', DongXeController::class);

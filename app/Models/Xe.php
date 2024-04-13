@@ -15,7 +15,7 @@ class Xe extends Model
     {
         return $this->belongsTo('App\Models\DongXe', 'iddongxe', 'iddongxe');
     }
-    
+
     public function hangxe()
     {
         return $this->belongsTo('App\Models\HangXe', 'idhangxe', 'idhangxe');
@@ -24,6 +24,11 @@ class Xe extends Model
     public function hinhxe()
     {
         return $this->belongsTo('App\Models\HinhXe', 'idhinhxe', 'idhinhxe');
+    }
+
+    public function hoadon()
+    {
+        return $this->belongsToMany('App\Models\HoaDon', 'xe_hoadon', 'idxe', 'idhoadon');
     }
 
     public function danhgia()

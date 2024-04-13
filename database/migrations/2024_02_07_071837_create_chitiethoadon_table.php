@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('tinhtrang', 50)->nullable();
             $table->date('ngaythue');
             $table->date('ngaytra');
-            $table->timestamp('created_at')->default(now());
+            $table->timestamp('created_at');
             $table->timestamp('updated_at')->default(now())->useCurrentOnUpdate();
         });
     }
