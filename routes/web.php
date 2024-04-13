@@ -14,6 +14,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageAdminController;
 use App\Http\Controllers\LoginGoogleController;
+use App\Http\Controllers\HelloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,13 +49,19 @@ Route::post('dangky', [AuthController::class, 'postDangKy'])->name('auth.dangky'
 
 Route::post('dangxuat', [AuthController::class, 'postDangXuat'])->name('auth.dangxuat');
 
+Route::get('/verify-account/{email}', [AuthController::class, 'verify'])->name('account.verify');
+
 Route::get('thuexe', [PageController::class, 'getThueXe'])->name('pages.thuexe');
+
+Route::get('filter', [XeController::class, 'filter'])->name('filter');
 
 Route::post('capnhatprofile', [AuthController::class, 'updateProfile'])->name('auth.update');
 
-Route::get('trangcanhan', [PageController::class, 'getTrangCaNhan'])->middleware('user');
+Route::get('trangcanhan', [PageController::class, 'getTrangCaNhan'])->middleware('user')->name('pages.trangcanhan');
 
 Route::get('chitietxe/{id}', [XeController::class, 'show'])->name('xe.show');
+
+Route::post('xac-nhan-dat-xe', [GiaoDichController::class, 'ajaxDatXe']);
 
 Route::get('timkiem', [PageController::class, 'timKiem'])->name('pages.timkiem');
 
@@ -106,3 +113,5 @@ Route::get('/failed', function () {
     $message = session('message');
     return view('pages.failed', compact('message'));
 })->name('failed');
+
+
