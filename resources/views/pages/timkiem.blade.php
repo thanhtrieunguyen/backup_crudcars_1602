@@ -66,15 +66,8 @@
             <ul class="product" style="justify-content: flex-start">
                 @foreach ($xes as $xe)
                     @php
-                        $array = json_decode($xe->hinhxe->hinhxe);
-                        $img1 = null;
-                        foreach ($array as $imagePath) {
-                            $imageSize = getimagesize($imagePath);
-                            if ($imageSize !== false && $imageSize[0] <= 1440 && $imageSize[1] <= 1080) {
-                                $img1 = $imagePath;
-                                break;
-                            }
-                        }
+                        $array = json_decode($xe->hinhxe->hinhxe, true);
+                        $img1 = $array[0] ?? './upload/images/default-image.jpg'; // Lấy ảnh đầu tiên hoặc dùng ảnh mặc định
                     @endphp
                     <li>
                         <div class="product-item">

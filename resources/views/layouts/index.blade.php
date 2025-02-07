@@ -5,7 +5,7 @@
     <title>Trang chủ</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <base href="{{ asset('') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -39,9 +39,10 @@
     <link rel="stylesheet" href="css/veVietCar.css">
 </head>
 
-<body class="" id="page-top" data-spy="scroll" data-offset="50">
+<body class="" id="page-top">
     @include('layouts.header')
-    <div class="container py-4" style="min-height: calc(100vh - 166px); margin-top: 56px">
+
+    <div class="container-xl" style="min-height: calc(100vh - 166px); margin: auto; padding: 8rem 0;">
         @yield('content')
     </div>
 
@@ -64,12 +65,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
-
-    {{-- <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/bootstrap-datepicker.vi.min.js"></script>
-
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -87,16 +83,6 @@
                     }
                 );
             });
-            //Datepicker
-            // $('.js_my_date_picker').datepicker({
-            //     format: 'dd/mm/yyyy',
-            //     language: 'vi',
-            //     weekStart: 1,
-            //     endDate: new Date(),
-            //     autoclose: true
-            // });
-            //Datatable
-            // $('#myTable').DataTable();
         });
     </script>
     @yield('script')

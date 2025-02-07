@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Xe;
 use App\Models\GiaoDich;
-use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PageAdminController extends Controller
 {
@@ -21,26 +21,19 @@ class PageAdminController extends Controller
     {
         $totalKhachHang = User::where('idrole', 2)->count();
         $totalXe = Xe::count();
-        $totalMoney = DB::table('hoadon')
-            ->where('tinhtranghoadon', 1)
-            ->select(DB::raw('SUM(tongtien) as total_money'))
-            ->get();
 
-        if ($totalMoney[0]->total_money == null) {
-            $totalMoney[0]->total_money = 0;
-        }
+        // Total revenue
+        $totalMoney = HoaDon::where('tinhtranghoadon', 1)->sum('tongtien');
 
-        $topXes = DB::table('xe')
-            ->join('giaodich', 'giaodich.idxe', '=', 'xe.idxe')
-            ->select('xe.idxe', 'xe.tenxe', DB::raw('COUNT(*) as times'))
-            ->where('giaodich.tinhtranggiaodich', 1)
-            ->groupBy('xe.idxe', 'xe.tenxe')
+        // Top 5 most rented cars
+        $topXes = Xe::withCount(['giaodich as times' => function ($query) {
+            $query->where('tinhtranggiaodich', 1);
+        }])
             ->orderBy('times', 'desc')
             ->take(5)
             ->get();
 
-
-
+        // Today's transactions
         $today = Carbon::now()->toDateString();
         $startOfDay = Carbon::createFromFormat('Y-m-d H:i:s', $today . ' 00:00:00');
         $endOfDay = Carbon::createFromFormat('Y-m-d H:i:s', $today . ' 23:59:59');
@@ -51,6 +44,23 @@ class PageAdminController extends Controller
             ->latest()
             ->get();
 
-        return view('admin.thongke', compact('totalKhachHang', 'totalXe', 'totalMoney', 'topXes', 'giaoDichTodays'));
+        // Optional: Monthly revenue data
+        $monthlyRevenue = HoaDon::where('tinhtranghoadon', 1)
+            ->select(
+                DB::raw('MONTH(created_at) as month'),
+                DB::raw('SUM(tongtien) as total_revenue')
+            )
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        return view('admin.thongke', compact(
+            'totalKhachHang',
+            'totalXe',
+            'totalMoney',
+            'topXes',
+            'giaoDichTodays',
+            'monthlyRevenue'
+        ));
     }
 }

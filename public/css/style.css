@@ -456,8 +456,7 @@ select {
 }
 
 #contact {
-  width: 80%;
-  margin: 50px auto;
+  margin: auto;
   padding: 10px;
 }
 
@@ -495,9 +494,9 @@ select {
 
 .contact-box-right {
   flex-basis: 40%;
-  padding: 40px 60px;
-  background-color: #002B3D;
-  color: #fff;
+  padding: 40px 40px;
+  border: #000 1px solid;
+  border-radius: 3rem;
 }
 
 .input-row {
@@ -532,21 +531,6 @@ label {
   margin-bottom: 6px;
   display: block;
   color: #002B3D;
-}
-
-#contact .submit {
-  display: block;
-  color: #fff;
-  font-weight: 500;
-  width: 100px;
-  height: 35px;
-  outline: none;
-  border: none;
-  border-radius: 30px;
-  background-color: #002B3D;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 tr td:first-child {
@@ -809,8 +793,6 @@ h5 {
 }
 
 h2 {
-  margin: 0;
-  margin-bottom: 64px;
   text-align: center;
   font-size: 3rem;
   font-weight: 700;

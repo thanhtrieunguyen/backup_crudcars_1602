@@ -8,9 +8,15 @@ use Illuminate\Http\Request;
 use App\Models\Xe;
 use App\Models\GiaoDich;
 use App\Models\HoaDon;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
+    public function getHello() {
+        return view('layouts.header');
+    }
+
     public function getHome()
     {
         $xes = Xe::with('dongXe', 'hangXe')->orderBy('gia', 'desc')->take(8)->get();
@@ -37,6 +43,29 @@ class PageController extends Controller
     public function getContact()
     {
         return view('pages.lienhe');
+    }
+
+    # example@gmail.com
+    public function postContact(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+            'content' => 'required'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'content' => $request->content
+        ];
+
+        Mail::to('thanhtrieunguyen2004@gmail.com')->send(new ContactMail($data));
+
+        return back()->with('success', 'Cảm ơn bạn đã liên hệ với chúng tôi!');
     }
 
     public function getThueXe()

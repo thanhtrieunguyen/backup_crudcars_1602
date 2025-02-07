@@ -1,196 +1,223 @@
 <style>
-    #top-up {
-        font-size: 2rem;
-        cursor: pointer;
-        position: fixed;
-        z-index: 9999;
-        color: #5fcf86;
-        bottom: 20px;
-        right: 15px;
-        display: none;
+    .footer {
+        padding: 3rem;
+        background: #fff;
     }
 
-    #top-up:hover {
-        color: #333
-    }
-
-
-
-    footer {
-
-        position: relative;
+    .footer-content {
         display: grid;
-        grid-template-columns: 400px repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
-        border-bottom: 1px solid #f5f5f5;
-
-    }
-
-    footer .column .logo {
-        max-width: 100px;
         margin-bottom: 2rem;
-
     }
 
-    footer .column .socials {
+    .footer-column {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+    }
+
+    .footer-logo {
+        max-width: 100px;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .footer-description {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-title {
+        color: #5fcf86;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
         gap: 1rem;
     }
 
-    footer .column h4 {
-        color: #5fcf86;
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-        font-weight: 500;
+    .footer-link {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s ease;
     }
 
-    footer .column>a {
-        display: block;
-        color: black;
-        margin-bottom: 1rem;
-        transition: all 0.2s ease;
-    }
-
-    footer .column>a:hover {
+    .footer-link:hover {
         color: #5fcf86;
     }
 
-    .payment {
+    .social-icons {
         display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
     }
 
-    .horizontal-line1 {
-        margin-bottom: 50px;
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #eee;
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+
+    .payment-methods {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .payment-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+
+    #top-up {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #5fcf86;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    #top-up:hover {
+        background: #4ab36f;
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .payment-methods {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     }
 </style>
 
-<hr class="horizontal-line1">
-<footer class="container">
-    <div class="column">
-        <div class="logo">
-            <img width="100px" src="/upload/slides/logo.png">
+<footer class="footer container">
+    <div class="footer-content">
+        <div class="footer-column">
+            <img class="footer-logo" src="/upload/slides/logo.png" alt="VietCar Logo">
+            <p class="footer-description">
+                Trang Đăng tin và Tìm kiếm thông tin về thuê xe. Chúng tôi kết nối dễ dàng giữa người thuê và người cho
+                thuê,
+                cung cấp những bộ lọc tìm kiếm thông minh để tìm kiếm xe phù hợp với nhu cầu của bạn.
+            </p>
+            <div class="social-icons">
+                <a href="#" class="footer-link">
+                    <img class="social-icon" src="upload/slides/t.png" alt="Twitter">
+                </a>
+                <a href="#" class="footer-link">
+                    <img class="social-icon" src="upload/slides/youtube.png" alt="YouTube">
+                </a>
+                <a href="#" class="footer-link">
+                    <img class="social-icon" src="upload/slides/facebook.png" alt="Facebook">
+                </a>
+            </div>
         </div>
-        <p>
-            Trang Đăng tin và Tìm kiếm thông tin về <a href="/thue-xe" style="color: blue">thuê</a> xe.
-            Chúng tôi kết nối dễ dàng giữa người thuê và người cho thuê. Đồng thời cung
-            cấp những bộ lọc tìm kiếm thông minh, giúp dễ dàng trong việc tìm kiếm
-            các thông tin xe phù hợp với nhu cầu của người dùng.
 
+        <div class="footer-column">
+            <h4 class="footer-title">Công ty</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Kinh doanh</a>
+                <a href="#" class="footer-link">Kênh truyền hình</a>
+                <a href="#" class="footer-link">Nhà tài trợ</a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h4 class="footer-title">Về chúng tôi</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Tính thông dụng</a>
+                <a href="#" class="footer-link">Quan hệ đối tác</a>
+                <a href="#" class="footer-link">Nhà phát triển</a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h4 class="footer-title">Liên hệ</h4>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Liên hệ chúng tôi</a>
+                <a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-an-ninh-mang-2018-351416.aspx"
+                    class="footer-link">Chính sách quyền riêng tư</a>
+                <a href="https://icontract.com.vn/tin-tuc/cac-quy-dinh-ve-dieu-khoan-bao-mat-thong-tin-trong-hop-dong"
+                    class="footer-link">Điều khoản và điều kiện</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p style="color: #666;">
+            Hotline: 1900 0000<br>
         </p>
-        <div class="socials">
-            <a href="#"><img width="40px" src="upload/slides/t.png"></i></a>
-            <a href="#"><img width="40px" src="upload/slides/youtube.png"></a>
-            <a href="#"><img width="40px" src="/upload/slides/facebook.png"></a>
+        <a href="#" class="footer-link">
+            <img width="100" src="./upload/slides/logobocongthuong.png" alt="Logo Bộ Công Thương">
+        </a>
+        <p style="color: #666; margin-top: 1rem;">Phương thức thanh toán</p>
+        <div class="payment-methods">
+            <img class="payment-icon" src="./upload/images/momo.png" alt="MoMo">
+            <img class="payment-icon" src="./upload/images/vnpay.png" alt="VNPay">
+            <img class="payment-icon" src="./upload/images/visa.png" alt="Visa">
+            <img class="payment-icon" src="./upload/images/zalopay.png" alt="ZaloPay">
         </div>
     </div>
-    <div class="column">
-        <h4>Công ty</h4>
-        <a href="#">Kinh doanh</a>
-        <a href="#">kênh truyền hình</a>
-        <a href="#">Nhà tài trợ</a>
-    </div>
-
-    <div class="column">
-        <h4>Về chúng tôi</h4>
-        <a href="#">Tính thông dụng</a>
-        <a href="#">Quan hệ đối tác</a>
-        <a href="#">Nhà phát triển</a>
-    </div>
-
-    <div class="column">
-        <h4>Liên hệ</h4>
-        <a href="#">Liên hệ chung tôi</a>
-        <a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-an-ninh-mang-2018-351416.aspx">Chính
-            sách quyền riêng tư</a>
-        <a
-            href="https://icontract.com.vn/tin-tuc/cac-quy-dinh-ve-dieu-khoan-bao-mat-thong-tin-trong-hop-dong#:~:text=%C4%90i%E1%BB%81u%20kho%E1%BA%A3n%20b%E1%BA%A3o%20m%E1%BA%ADt%20(confidentiality,m%E1%BA%ADt%20nh%E1%BB%AFng%20th%C3%B4ng%20tin%20%C4%91%C3%B3.">Điều
-            khoản và điều kiện</a>
-    </div>
-
-    <p style="color: black;">
-        Hotline: 1900 3333 <br>
-        Mr.Group 6
-        <a href="#" class="logo-gorvement">
-            <img width="100px" src="./upload/slides/logobocongthuong.png" alt="">
-        </a>
-    <p>Phương thức thanh toán</p>
-    <div class="socials">
-        <img width="40px" src="./upload/images/momo.png" alt="">
-        <img width="40px" src="./upload/images/vnpay.png" alt="">
-        <img width="40px" src="./upload/images/visa.png" alt="">
-        <img width="40px" src="./upload/images/zalopay.png" alt="">
-    </div>
-    </p>
-    {{-- <script src=" script.js"></script> --}}
 </footer>
-{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
-{{-- <script src="js/carouseller.js"></script>
-<script src="js/jquery.easing.1.3.js"></script> --}}
-{{-- <script type="text/javascript" src="libs/fancybox/jquery.fancybox.min.js"></script> --}}
 
+<div id="top-up" title="Về đầu trang">
+    <i class="fas fa-arrow-up"></i>
+</div>
+{{-- 
 <script>
-    function formatNumber(input) {
-        // Xóa tất cả ký tự không phải số và ký tự dấu phẩy khỏi giá trị của input
-        var value = input.value.replace(/[^0-9]/g, '');
+    $(function() {
+        var offset = 400;
+        var duration = 500;
 
-        // Gán giá trị đã định dạng lại vào input
-        input.value = value;
-    }
-</script>
-
-{{-- <script>
-    $(".quick-buy-form").submit(function(event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: './process_cart.php?action=add',
-            data: $(this).serializeArray(),
-            success: function(response) {
-                response = JSON.parse(response);
-                if (response.status == 0) { //Có lỗi
-                    alert(response.message);
-                } else { //Mua thành công
-                    alert(response.message);
-                    //                                    location.reload();
-                }
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > offset) {
+                $('#top-up').fadeIn(duration);
+            } else {
+                $('#top-up').fadeOut(duration);
             }
         });
-    });
-</script> --}}
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
-    integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
-<script>
-    var offset = 400;
-    var duration = 750;
-    $(function() {
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > offset)
-                $('#top-up').fadeIn(duration);
-            else
-                $('#top-up').fadeOut(duration);
-        });
-        $('#top-up').click(function() {
-            $('body,html').animate({
+        $('#top-up').click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({
                 scrollTop: 0
             }, duration);
+            return false;
         });
     });
-</script>
-<div title="Về đầu trang" id="top-up">
-    <i class="fas fa-arrow-circle-up"></i>
-</div>
-{{-- <script type="text/javascript">
-    $(function() {
-        $('#product-slide').carouseller();
-    });
 </script> --}}
-
-</body>
-
-</html>

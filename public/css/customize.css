@@ -52,7 +52,63 @@ pre {
     padding: 0;
 }
 
+/* CSS BUTTON */
 
+.btn:focus {
+    outline: none;
+    box-shadow: 0 4px 12px rgba(66, 225, 79, 0.2);
+    border-color: #5fcf86
+}
+
+.btn.btn-primary {
+    color: #fff;
+    background-color: #5fcf86;
+    border-color: #5fcf86;
+}
+
+.btn.btn-outline-primary {
+    color: #5fcf86;
+    background-color: transparent;
+    border-color: #5fcf86;
+}
+
+.btn.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #5fcf86;
+    border-color: #5fcf86;
+}
+
+.btn.btn-primary:hover {
+    color: #fff;
+    background-color: #5fcf86;
+    border-color: #5fcf86;
+}
+
+.btn.btn-primary:focus {
+    color: #fff;
+    background-color: #5fcf86;
+    border-color: #5fcf86;
+}
+
+.btn.btn-outline-primary:focus {
+    color: #5fcf86;
+    background-color: transparent;
+    border-color: #5fcf86 !important;
+}
+
+.btn.btn-outline-primary:active {
+    color: #fff;
+    background-color: #5fcf86 !important;
+    border-color: #5fcf86 !important;
+}
+
+.btn.btn-primary:active {
+    color: #fff;
+    background-color: #5fcf86 !important;
+    border-color: #5fcf86 !important;
+}
+
+/* END CSS BUTTON */
 
 .pageLoader {
     background: url(../upload/images/loader.gif) no-repeat center center;
@@ -76,10 +132,6 @@ pre {
     top: 0;
     right: 0;
     cursor: pointer;
-}
-
-button {
-    border: 1px solid black
 }
 
 #preview img {
@@ -442,31 +494,6 @@ h6 {
     align-items: center !important;
 }
 
-.btn.btn--m {
-    padding: 16px 24px;
-}
-
-.btn.btn-primary {
-    color: #fff;
-    background-color: #5fcf86;
-    border-color: #5fcf86;
-}
-
-.btn {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    grid-gap: 8px;
-    gap: 8px;
-    vertical-align: middle;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 8px;
-}
-
 .width-100 {
     width: 100% !important;
     max-width: 100% !important;
@@ -636,22 +663,24 @@ pre {
 
 /* END CHINH SACH QUY DINH */
 
-.navbar-dark .navbar-nav .nav-link {
-    color: black;
-    font-weight: 600;
-    font-size: .875rem;
-    font-weight: 700;
-    padding: 12px 16px;
-}
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+    nav.navbar {
+        padding: 0 10px;
+    }
 
-.navbar-dark .navbar-nav .nav-link:focus,
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: black
-}
+    .m-container,
+    .container {
+        padding: 0 15px;
+    }
 
-nav.navbar {
-    background-color: #fff;
-    background-image: url(https://www.mioto.vn/static/media/header.350aa232.png);
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h6 {
+        font-size: 1.125rem;
+    }
 }
 
 /* START CSS TRANG CHU */

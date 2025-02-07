@@ -73,8 +73,7 @@ class XeController extends Controller
 
         $xe = Xe::create($xeData);
 
-        return back()->with(['thong-bao' => 'Thêm xe ' . $xe->tenxe . ' thành công!', 'type' => 'success'])
-        ;
+        return back()->with(['thong-bao' => 'Thêm xe ' . $xe->tenxe . ' thành công!', 'type' => 'success']);
     }
 
     public function edit($id)
@@ -87,7 +86,6 @@ class XeController extends Controller
         $hinhXeArr = json_decode($hinhXeStr->hinhxe);
 
         return view('admin.xe.edit', compact('xe', 'dongXe', 'hangXe', 'hinhXeArr'));
-
     }
 
     public function update(UpdateRequest $request, $id)
@@ -223,29 +221,35 @@ class XeController extends Controller
 
     public function filter(Request $request)
     {
-        $dongXeId = $request->query('dongxe');
-        $hangXeId = $request->query('hangxe');
+        $query = Xe::query();
 
-        $dongXes = DongXe::select('iddongxe', 'tendongxe')->get();
-        $hangXes = HangXe::select('idhangxe', 'tenhangxe')->get();
-        
-        $xes = Xe::query();
-
-        if ($dongXeId != "None") {
-            $xes->where('iddongxe', $dongXeId);
+        if ($request->filled('dongxe')) {
+            $query->where('iddongxe', $request->dongxe);
         }
 
-        if ($hangXeId != "None") {
-            $xes->where('idhangxe', $hangXeId);
+        if ($request->filled('hangxe')) {
+            $query->where('idhangxe', $request->hangxe);
         }
 
-        $xes = $xes->paginate(10);
+        if ($request->filled('nhienlieu')) {
+            $query->where('nhienlieu', $request->nhienlieu);
+        }
 
-        // Trả về view với danh sách xe đã lọc
+        // Nhân min_price và max_price với 1000 để chuyển từ nghìn sang đơn vị thực tế
+        if ($request->filled('min_price')) {
+            $minPrice = $request->min_price * 1000;
+            $query->where('gia', '>=', $minPrice);
+        }
+
+        if ($request->filled('max_price')) {
+            $maxPrice = $request->max_price * 1000;
+            $query->where('gia', '<=', $maxPrice);
+        }
+
+        $xes = $query->paginate(12);
+        $dongXes = DongXe::all();
+        $hangXes = HangXe::all();
+
         return view('pages.thuexe', compact('xes', 'dongXes', 'hangXes'));
     }
-
-
-
-
 }

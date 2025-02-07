@@ -312,5 +312,21 @@ ul.product li .product-info .product-price {
     border-color: #aaa;
 }
 
+/* Responsive product grid */
+@media (max-width: 992px) {
+    ul.product li {
+        flex-basis: 33.3333%;
+    }
+}
+@media (max-width: 768px) {
+    ul.product li {
+        flex-basis: 50%;
+    }
+}
+@media (max-width: 576px) {
+    ul.product li {
+        flex-basis: 100%;
+    }
+}
 
 /* END CSS TRANG THUE XE */

@@ -27,7 +27,7 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-
+Route::get('/hello', [PageController::class, 'getHello']);
 
 Route::get('/', [PageController::class, 'getHome'])->name('pages.trangchu');
 
@@ -66,7 +66,9 @@ Route::post('xac-nhan-dat-xe', [GiaoDichController::class, 'ajaxDatXe']);
 Route::get('timkiem', [PageController::class, 'timKiem'])->name('pages.timkiem');
 
 Route::get('about', [PageController::class, 'getAbout'])->name('pages.about');
+
 Route::get('contact', [PageController::class, 'getContact'])->name('pages.contact');
+Route::post('contact', [PageController::class, 'postContact'])->name('contact');
 
 Route::get('blog', [PageController::class, 'getBlog'])->name('pages.blog');
 

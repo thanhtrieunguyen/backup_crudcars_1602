@@ -1,6 +1,25 @@
 @extends('layouts.index')
 
+@section('title')
+    Trang cá nhân
+@endsection
+
 @section('content')
+    <style>
+        .nav-pills .nav-link.active {
+            background-color: #1b995e;
+            color: white;
+        }
+
+        .nav-pills .nav-link {
+            color: #000;
+        }
+
+        .nav-pills .nav-link:hover {
+            color: none;
+        }
+    </style>
+
     <div class="row">
         <div class="col-8 offset-2">
             <div class="card border-0 rounded-lg shadow">

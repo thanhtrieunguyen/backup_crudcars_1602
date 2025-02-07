@@ -2,52 +2,16 @@
 
 <head>
     <link rel="icon" type="image/x-icon" href="upload/slides/car.png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 @section('content')
-    <link rel="stylesheet" href="css/style.css">
-    <marquee>VietCar-Dịch cho thuê xe 4-7-16 chỗ hàng đầu Việt Nam.Thông báo chương trình đồ án cơ sở ngành năm 2023-2024
-        bắt đầu từ ngày 1/1/2024 đến hết ngày 30/5/2024</marquee>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner rounded-lg shadow border-0">
-            <div class="carousel-item active banner__img " style="text-align: center;">
-                <h1>VietCar - Cùng Bạn Đến Mọi Hành Trình</h1><br>
-                <div class="horizontal-line"></div><br>
-                <h6>Trải nghiệm sự khác biệt từ <span>hơn 1000</span> xe gia đình đời mới khắp Việt Nam</h6>
-                <h6>Hotline: 19003333</h6>
-            </div>
-
-            <div class="carousel-item ">
-                <img width="200" src="/upload/slides/slide-1.jpg" class="d-block w-100 " alt="slide1">
-            </div>
-            <div class="carousel-item">
-                <img src="/upload/slides/slide-2.jpg" class="d-block w-100" alt="slide2">
-            </div>
-            <div class="carousel-item">
-                <img src="/upload/slides/slide-5.jpeg" class="d-block w-100" alt="slide3">
-            </div>
-            <div class="carousel-item">
-                <img src="/upload/slides/slide-6.jpg" class="d-block w-100" alt="slide3">
-            </div>
-            <div class="carousel-item">
-                <img src="/upload/slides/slide-7.jpg" class="d-block w-100" alt="slide3">
-            </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+    <div class="carousel-inner rounded-lg shadow border-0">
+        <div class="carousel-item active banner__img " style="text-align: center;">
+            <h1>VietCar - Cùng Bạn Đến Mọi Hành Trình</h1><br>
+            <div class="horizontal-line"></div><br>
+            <h6>Trải nghiệm sự khác biệt từ <span>hơn 1000</span> xe gia đình đời mới khắp Việt Nam</h6>
+            <h6>Hotline: 19000000</h6>
         </div>
-
-
     </div>
 
     <div class="row mt-5">
@@ -57,16 +21,10 @@
         <ul class="product" style="justify-content: flex-start">
             @foreach ($xes as $xe)
                 @php
-                    $array = json_decode($xe->hinhxe->hinhxe);
-                    $img1 = null;
-                    foreach ($array as $imagePath) {
-                        $imageSize = getimagesize($imagePath);
-                        if ($imageSize !== false && $imageSize[0] <= 1440 && $imageSize[1] <= 1080) {
-                            $img1 = $imagePath;
-                            break;
-                        }
-                    }
+                    $array = json_decode($xe->hinhxe->hinhxe, true);
+                    $img1 = $array[0] ?? './upload/images/default-image.jpg'; // Lấy ảnh đầu tiên hoặc dùng ảnh mặc định
                 @endphp
+
                 <li>
                     <div class="product-item">
                         <div class="product-top">
@@ -326,7 +284,7 @@
 
             {{-- <form action="{{ url('comment/' . $xe->id) }}" method="post" role="form">
                 @csrf
-                
+
             </form> --}}
         @endif
 
